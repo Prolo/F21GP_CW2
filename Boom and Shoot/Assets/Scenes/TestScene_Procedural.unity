@@ -148,10 +148,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6a62207c3d23b94d8b4c48bbd61d844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rooms: []
+  rooms:
+  - {fileID: 3341879631917985242, guid: d9a01ec549609624db18b8c2e1b1e0ab, type: 3}
   startRoom: {fileID: 8989156370753825519, guid: d32328a2fe1ba834085e4752503e3bfa, type: 3}
   finishRoom: {fileID: 6119508343255845311, guid: 8eba2bcc13f64794d857cb5263edfa4f, type: 3}
   dungeonDistance: 100
+  numberOfRooms: 20
 --- !u!4 &693357042
 Transform:
   m_ObjectHideFlags: 0
