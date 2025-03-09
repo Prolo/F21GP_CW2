@@ -28,6 +28,10 @@ public class Procedural_Script : MonoBehaviour
     private bool allRoomsInPlace = false;
     private bool delanayTrianglesStarted = false;
     private bool refinningConnectionsStarted = false;
+    private bool MSTStarted = false;
+
+    //private string startRoomId;
+    //private wp_Point wp_StartRoom;
 
 
     private Dictionary<string, wp_RoomCenterData> wp_Dictionary = new Dictionary<string, wp_RoomCenterData>();
@@ -64,8 +68,11 @@ public class Procedural_Script : MonoBehaviour
             DelaunayManager.RefineResults();
             refinningConnectionsStarted = true;
         }
-        else if(DelaunayManager.IsTriangulationComplete == true && DelaunayManager.isRefinationCompleted == true)
+        else if (DelaunayManager.IsTriangulationComplete == true && DelaunayManager.isRefinationCompleted == true && MSTStarted == false)
         {
+
+            MSTManager.RunTriangulationAsync();
+            MSTStarted = true;
 
             //bool hasDuplicates = HasDuplicateConnections(DelaunayManager.uniqueConnections);
 
@@ -80,6 +87,13 @@ public class Procedural_Script : MonoBehaviour
 
             //DrawUniqueConnections();
         }
+        else if (DelaunayManager.IsTriangulationComplete == true && DelaunayManager.isRefinationCompleted == true && MSTManager.IsTreeComplete == true)
+        {
+            var a = MSTManager.MSTree;
+
+            DrawUniqueConnections();
+           
+        }
         
     }
 
@@ -91,6 +105,10 @@ public class Procedural_Script : MonoBehaviour
         wp_RoomCenterData wp_sRoom = sRoom.GetComponentInChildren<wp_RoomCenterData>();
 
         wp_Dictionary.Add(wp_sRoom.objectID, wp_sRoom);
+
+        //startRoomId = wp_sRoom.objectID;
+
+        //wp_StartRoom = wp_sRoom.wpTowp_Point();
     }
 
     void CreateFinishRoom()
@@ -155,7 +173,7 @@ public class Procedural_Script : MonoBehaviour
 
     public static void DrawUniqueConnections()
     {
-        foreach (var edge in DelaunayManager.uniqueConnections)
+        foreach (var edge in MSTManager.MSTree)
         {
             DrawRay(edge.Item1, edge.Item2);
         }

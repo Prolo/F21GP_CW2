@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class DelaunayManager : MonoBehaviour
+public class DelaunayManager
 {
     public static List<wp_Point> points = new List<wp_Point>();
     public static List<Triangle> results = new List<Triangle>();
@@ -12,12 +12,12 @@ public class DelaunayManager : MonoBehaviour
     public static bool IsTriangulationComplete = false; // Completion flag
     public static bool isRefinationCompleted = false; //refine flag
 
-    void Start() //this is never triggering, I am calling the method in Procedural
-    {
-        RunTriangulationAsync();
-        RefineResults();
+    //void Start() //this is never triggering, I am calling the method in Procedural
+    //{
+    //    RunTriangulationAsync();
+    //    RefineResults();
         
-    }
+    //}
 
     public void Reset()
     {

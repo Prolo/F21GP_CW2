@@ -156,7 +156,7 @@ MonoBehaviour:
   startRoom: {fileID: 8989156370753825519, guid: d32328a2fe1ba834085e4752503e3bfa, type: 3}
   finishRoom: {fileID: 6119508343255845311, guid: 8eba2bcc13f64794d857cb5263edfa4f, type: 3}
   dungeonDistance: 100
-  numberOfRooms: 10
+  numberOfRooms: 20
   currentRooms: 0
   wp_RoomCenters: []
 --- !u!4 &693357042
@@ -381,13 +381,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1350394647}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.40940198, y: -0, z: -0, w: 0.9123541}
+  m_LocalPosition: {x: 58.2, y: 48.8, z: -62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 48.335, y: 0, z: 0}
 --- !u!114 &1350394651
 MonoBehaviour:
   m_ObjectHideFlags: 0
