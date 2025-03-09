@@ -27,6 +27,8 @@ public class Procedural_Script : MonoBehaviour
 
     private bool allRoomsInPlace = false;
     private bool delanayTrianglesStarted = false;
+    private bool refinningConnectionsStarted = false;
+
 
     private Dictionary<string, wp_RoomCenterData> wp_Dictionary = new Dictionary<string, wp_RoomCenterData>();
 
@@ -57,10 +59,28 @@ public class Procedural_Script : MonoBehaviour
             DelaunayManager.RunTriangulationAsync();
             delanayTrianglesStarted = true;
         }
-        else if (DelaunayManager.IsTriangulationComplete == true)
+        else if (DelaunayManager.IsTriangulationComplete == true && refinningConnectionsStarted == false)
         {
-            //DrawDelaunayTriangles();
+            DelaunayManager.RefineResults();
+            refinningConnectionsStarted = true;
         }
+        else if(DelaunayManager.IsTriangulationComplete == true && DelaunayManager.isRefinationCompleted == true)
+        {
+
+            //bool hasDuplicates = HasDuplicateConnections(DelaunayManager.uniqueConnections);
+
+            //if (hasDuplicates)
+            //{
+            //    Debug.Log("Duplicate connections found!");
+            //}
+            //else
+            //{
+            //    Debug.Log("No duplicate connections.");
+            //}
+
+            //DrawUniqueConnections();
+        }
+        
     }
 
 
@@ -133,19 +153,17 @@ public class Procedural_Script : MonoBehaviour
 
     }
 
-    public static void DrawDelaunayTriangles()
+    public static void DrawUniqueConnections()
     {
-        foreach (var triangle in DelaunayManager.results)
+        foreach (var edge in DelaunayManager.uniqueConnections)
         {
-            DrawRay(triangle.A, triangle.B);
-            DrawRay(triangle.B, triangle.C);
-            DrawRay(triangle.C, triangle.A);
+            DrawRay(edge.Item1, edge.Item2);
         }
     }
 
     public static void DrawRay(wp_Point p1, wp_Point p2)
     {
-        GameObject lineObj = new GameObject("TriangleEdge");
+        GameObject lineObj = new GameObject($"Edge_{p1.objectID}_{p2.objectID}");
         LineRenderer lr = lineObj.AddComponent<LineRenderer>();
 
         lr.startWidth = 0.2f;
@@ -154,6 +172,30 @@ public class Procedural_Script : MonoBehaviour
 
         lr.SetPosition(0, new Vector3(p1.X, 0, p1.Z));
         lr.SetPosition(1, new Vector3(p2.X, 0, p2.Z));
+
+        lr.material = new Material(Shader.Find("Sprites/Default")); // Basic material for visibility
+        lr.startColor = Color.green;
+        lr.endColor = Color.green;
+    }
+
+    //FOR TESTING, DELETE AFTER
+    public static bool HasDuplicateConnections(HashSet<(wp_Point, wp_Point)> uniqueConnections)
+    {
+        HashSet<(wp_Point, wp_Point)> seenEdges = new HashSet<(wp_Point, wp_Point)>();
+
+        foreach (var edge in uniqueConnections)
+        {
+            var reverseEdge = (edge.Item2, edge.Item1);
+
+            if (seenEdges.Contains(reverseEdge))
+            {
+                return true; // Found a duplicate connection (A -> B and B -> A)
+            }
+
+            seenEdges.Add(edge);
+        }
+
+        return false; // No duplicates found
     }
 
 }

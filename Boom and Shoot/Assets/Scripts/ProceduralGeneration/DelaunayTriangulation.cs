@@ -101,4 +101,43 @@ public static class DelaunayTriangulation
         else if (polygon.Contains(reverseEdge)) polygon.Remove(reverseEdge);
         else polygon.Add(edge);
     }
+
+    //METHOD TO REFINE THE CONNECTIONS
+    public static HashSet<(wp_Point, wp_Point)> GetUniqueConnections(List<Triangle> triangulation)
+    {
+        HashSet<(wp_Point, wp_Point)> uniqueEdges = new HashSet<(wp_Point, wp_Point)>();
+
+        foreach (var triangle in triangulation)
+        {
+            AddUniqueConnection(uniqueEdges, triangle.A, triangle.B);
+            AddUniqueConnection(uniqueEdges, triangle.B, triangle.C);
+            AddUniqueConnection(uniqueEdges, triangle.C, triangle.A);
+        }
+
+        return uniqueEdges;
+    }
+
+    private static void AddUniqueConnection(HashSet<(wp_Point, wp_Point)> edges, wp_Point p1, wp_Point p2)
+    {
+        wp_Point first;
+        wp_Point second;
+
+        if (p1.X < p2.X || (p1.X == p2.X && p1.Z < p2.Z))
+        {
+            first = p1;
+            second = p2;
+        }
+        else
+        {
+            first = p2;
+            second = p1;
+        }
+
+        var edge = (first, second);
+
+        if (!edges.Contains(edge))
+        {
+            edges.Add(edge);
+        }
+    }
 }

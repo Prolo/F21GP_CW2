@@ -6,12 +6,26 @@ using UnityEngine;
 public class DelaunayManager : MonoBehaviour
 {
     public static List<wp_Point> points = new List<wp_Point>();
-    public static List<Triangle> results;
-    public static bool IsTriangulationComplete { get; private set; } = false; // Completion flag
+    public static List<Triangle> results = new List<Triangle>();
+    public static HashSet<(wp_Point, wp_Point)> uniqueConnections = new HashSet<(wp_Point, wp_Point)>();
 
-    void Start()
+    public static bool IsTriangulationComplete = false; // Completion flag
+    public static bool isRefinationCompleted = false; //refine flag
+
+    void Start() //this is never triggering, I am calling the method in Procedural
     {
         RunTriangulationAsync();
+        RefineResults();
+        
+    }
+
+    public void Reset()
+    {
+        points = new List<wp_Point>();
+        results = new List<Triangle>();
+        uniqueConnections = new HashSet<(wp_Point, wp_Point)>();
+        IsTriangulationComplete = false;
+        isRefinationCompleted = false;
     }
 
     public static async void RunTriangulationAsync()
@@ -24,9 +38,22 @@ public class DelaunayManager : MonoBehaviour
             return DelaunayTriangulation.BowyerWatson(points);
         });
 
-        IsTriangulationComplete = true; // Set flag when done
-        Debug.Log("Triangulation Completed!");
+        IsTriangulationComplete = true;
 
-        Procedural_Script.DrawDelaunayTriangles();
+        Debug.Log("Triangulation Completed!");
+    }
+
+    public static async void RefineResults()
+    {
+        uniqueConnections = await Task.Run(() =>
+        {
+            return DelaunayTriangulation.GetUniqueConnections(results);
+        });
+
+        Debug.Log("Refine Completed!");
+
+        isRefinationCompleted = true;
+
+
     }
 }

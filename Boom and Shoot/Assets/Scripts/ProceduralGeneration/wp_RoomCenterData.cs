@@ -14,16 +14,16 @@ public class wp_RoomCenterData : MonoBehaviour
         Z = transform.position.z;
     }
 
-    void Start()
-    {
+    //void Start()
+    //{
 
-    }
+    //}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //Update is called once per frame
+    //void Update()
+    //{
+
+    //}
 
     public wp_Point wpTowp_Point()
     {
