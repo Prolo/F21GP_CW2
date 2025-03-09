@@ -149,11 +149,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rooms:
+  - {fileID: 451484437402603658, guid: cda030761d329d349b6dd4ca9e7df8a9, type: 3}
+  - {fileID: 451484437402603658, guid: ef97341f11ad3804fb42df0baa3336a3, type: 3}
   - {fileID: 3341879631917985242, guid: d9a01ec549609624db18b8c2e1b1e0ab, type: 3}
+  - {fileID: 5397003930228067411, guid: 4d6f32ca43090124f8bed3c38320552d, type: 3}
   startRoom: {fileID: 8989156370753825519, guid: d32328a2fe1ba834085e4752503e3bfa, type: 3}
   finishRoom: {fileID: 6119508343255845311, guid: 8eba2bcc13f64794d857cb5263edfa4f, type: 3}
   dungeonDistance: 100
-  numberOfRooms: 20
+  numberOfRooms: 10
+  currentRooms: 0
+  wp_RoomCenters: []
 --- !u!4 &693357042
 Transform:
   m_ObjectHideFlags: 0

@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
+
+
 
 public class Procedural_Script : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField]
     public List<GameObject> rooms;
 
@@ -19,7 +21,14 @@ public class Procedural_Script : MonoBehaviour
     [SerializeField]
     public int numberOfRooms = 1;
 
-    public static int currentRooms = 0;
+    public int currentRooms = 0;
+
+    public List<GameObject> wp_RoomCenters = new List<GameObject>();
+
+    private bool allRoomsInPlace = false;
+    private bool delanayTrianglesStarted = false;
+
+    private Dictionary<string, wp_RoomCenterData> wp_Dictionary = new Dictionary<string, wp_RoomCenterData>();
 
     void Start()
     {
@@ -27,25 +36,52 @@ public class Procedural_Script : MonoBehaviour
         CreateFinishRoom();
     }
 
-
     void Update()
     {
-        if (currentRooms < numberOfRooms)
+        if (currentRooms < numberOfRooms && allRoomsInPlace == false)
         {
-            AddRoom();           
+            AddRoom();
+        }
+        else
+        {
+            allRoomsInPlace = true;
+        }
+
+        if (delanayTrianglesStarted == false && allRoomsInPlace == true)
+        {
+            foreach (var kvp in wp_Dictionary)
+            {
+                DelaunayManager.points.Add(kvp.Value.wpTowp_Point());
+            }
+
+            DelaunayManager.RunTriangulationAsync();
+            delanayTrianglesStarted = true;
+        }
+        else if (DelaunayManager.IsTriangulationComplete == true)
+        {
+            //DrawDelaunayTriangles();
         }
     }
 
 
     void CreateStartRoom()
     {
-        Instantiate(startRoom, Vector3.zero, Quaternion.identity);
+        GameObject sRoom = Instantiate(startRoom, Vector3.zero, Quaternion.identity);
+
+        wp_RoomCenterData wp_sRoom = sRoom.GetComponentInChildren<wp_RoomCenterData>();
+
+        wp_Dictionary.Add(wp_sRoom.objectID, wp_sRoom);
     }
 
     void CreateFinishRoom()
     {
-        Vector3 finishPosition = new Vector3(dungeonDistance, 0, 0); 
-        Instantiate(finishRoom, finishPosition, Quaternion.identity);
+        Vector3 finishPosition = new Vector3(dungeonDistance, 0, 0);
+
+        GameObject fRoom = Instantiate(finishRoom, finishPosition, Quaternion.identity);
+
+        wp_RoomCenterData wp_sRoom = fRoom.GetComponentInChildren<wp_RoomCenterData>();
+
+        wp_Dictionary.Add(wp_sRoom.objectID, wp_sRoom);
     }
 
 
@@ -90,8 +126,34 @@ public class Procedural_Script : MonoBehaviour
             Debug.Log($"{gameObject.name} is NOT colliding with anything.");
             newRoom.GetComponent<destroyOnCollision>().landed = true;
             currentRooms = currentRooms + 1;
+            wp_RoomCenterData wp_NewRoom = newRoom.GetComponentInChildren<wp_RoomCenterData>();
+
+            wp_Dictionary.Add(wp_NewRoom.objectID, wp_NewRoom);
         }
 
+    }
+
+    public static void DrawDelaunayTriangles()
+    {
+        foreach (var triangle in DelaunayManager.results)
+        {
+            DrawRay(triangle.A, triangle.B);
+            DrawRay(triangle.B, triangle.C);
+            DrawRay(triangle.C, triangle.A);
+        }
+    }
+
+    public static void DrawRay(wp_Point p1, wp_Point p2)
+    {
+        GameObject lineObj = new GameObject("TriangleEdge");
+        LineRenderer lr = lineObj.AddComponent<LineRenderer>();
+
+        lr.startWidth = 0.2f;
+        lr.endWidth = 0.2f;
+        lr.positionCount = 2;
+
+        lr.SetPosition(0, new Vector3(p1.X, 0, p1.Z));
+        lr.SetPosition(1, new Vector3(p2.X, 0, p2.Z));
     }
 
 }
