@@ -14,16 +14,6 @@ public class wp_RoomCenterData : MonoBehaviour
         Z = transform.position.z;
     }
 
-    //void Start()
-    //{
-
-    //}
-
-    //Update is called once per frame
-    //void Update()
-    //{
-
-    //}
 
     public wp_Point wpTowp_Point()
     {
@@ -37,14 +27,5 @@ public class wp_RoomCenterData : MonoBehaviour
         return wp;
     }
 
-    //public wp_Point wpTowp_Point(float X, float Y)
-    //{
-    //    wp_Point wp = new()
-    //    {
-    //        X = this.X,
-    //        Y = this.Y
-    //    };
 
-    //    return wp;
-    //}
 }

@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 
 // Represents a triangle with three wp_Points
-public class wp_Point
+public class wp_Point 
 {
     public string objectID;
     public float X;

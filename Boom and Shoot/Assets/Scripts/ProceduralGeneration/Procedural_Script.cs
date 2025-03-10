@@ -29,10 +29,7 @@ public class Procedural_Script : MonoBehaviour
     private bool delanayTrianglesStarted = false;
     private bool refinningConnectionsStarted = false;
     private bool MSTStarted = false;
-
-    //private string startRoomId;
-    //private wp_Point wp_StartRoom;
-
+    private bool PathsStarted = false;
 
     private Dictionary<string, wp_RoomCenterData> wp_Dictionary = new Dictionary<string, wp_RoomCenterData>();
 
@@ -87,8 +84,10 @@ public class Procedural_Script : MonoBehaviour
 
             //DrawUniqueConnections();
         }
-        else if (DelaunayManager.IsTriangulationComplete == true && DelaunayManager.isRefinationCompleted == true && MSTManager.IsTreeComplete == true)
+        else if (DelaunayManager.IsTriangulationComplete == true && DelaunayManager.isRefinationCompleted == true && MSTManager.IsTreeComplete == true && PathsStarted == false)
         {
+            PathManager.wp_Dictionary = this.wp_Dictionary;
+            PathGenerator.GeneratePaths();
             var a = MSTManager.MSTree;
 
             DrawUniqueConnections();
@@ -155,14 +154,17 @@ public class Procedural_Script : MonoBehaviour
 
         GameObject newRoom = Instantiate(randomRoom, randomPosition, Quaternion.identity);
 
-        Collider roomCollider = newRoom.GetComponent<Collider>();
+        Collider roomCollider = newRoom.transform.Find("Floor").GetComponent<Collider>();
+
         Collider[] hitColliders = Physics.OverlapBox(roomCollider.bounds.center, roomCollider.bounds.extents);
 
 
         if (hitColliders.Length <= 2)
         {
             Debug.Log($"{gameObject.name} is NOT colliding with anything.");
-            newRoom.GetComponent<destroyOnCollision>().landed = true;
+
+            newRoom.transform.Find("Floor").GetComponent<destroyOnCollision>().landed = true;
+
             currentRooms = currentRooms + 1;
             wp_RoomCenterData wp_NewRoom = newRoom.GetComponentInChildren<wp_RoomCenterData>();
 
