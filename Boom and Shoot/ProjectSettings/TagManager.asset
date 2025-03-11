@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - wp_Door
+  - CinemachineTarget
+  - Doors
+  - Roof
   layers:
   - Default
   - TransparentFX
@@ -12,8 +15,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Hide
+  - Marker
   - 
   - 
   - 
