@@ -178,9 +178,10 @@ MonoBehaviour:
   mouseSensitivity: 3.5
   speed: 10
   gravity: -30
-  jumpHeight: 6
+  jumpHeight: 20
   velocityY: 0
   cameraCap: 0
+  maxJumps: 1
   ground:
     serializedVersion: 2
     m_Bits: 0
