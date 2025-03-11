@@ -21,6 +21,8 @@ public class MSTManager
 
         IsTreeComplete = true;
 
+        PathManager.pathQueue = new Queue<(wp_Point, wp_Point)>(MSTree);
+
         Debug.Log("Triangulation Completed!");
     }
 

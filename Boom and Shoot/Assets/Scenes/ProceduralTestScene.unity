@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 693357042}
   - component: {fileID: 693357041}
+  - component: {fileID: 693357043}
   m_Layer: 0
   m_Name: ProceduralBuilder
   m_TagString: Untagged
@@ -153,7 +154,7 @@ MonoBehaviour:
   startRoom: {fileID: 1999347402391225194, guid: 527bd1ceab3928a44b22ee956bee1d03, type: 3}
   finishRoom: {fileID: 8889533646547674066, guid: 946f2fe4786391945b3601a6a246c4ca, type: 3}
   dungeonDistance: 100
-  numberOfRooms: 20
+  numberOfRooms: 45
   currentRooms: 0
   wp_RoomCenters: []
 --- !u!4 &693357042
@@ -171,6 +172,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &693357043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693357040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fc6d997006b0fc448a8008228fee2c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentStart: {fileID: 0}
+  currentEnd: {fileID: 0}
+  wpPathPrefab: {fileID: 7436029226641920012, guid: 247cef1bcc90c3143b673ae08f4f3d09, type: 3}
+  FloorTile: {fileID: 7588320906972414014, guid: 5cd0178e00c0e614f9ab5c0390e94929, type: 3}
 --- !u!1 &1089706399
 GameObject:
   m_ObjectHideFlags: 0

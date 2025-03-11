@@ -29,9 +29,9 @@ public class Procedural_Script : MonoBehaviour
     private bool delanayTrianglesStarted = false;
     private bool refinningConnectionsStarted = false;
     private bool MSTStarted = false;
-    private bool PathsStarted = false;
+    public static bool PathsStarted = false;
 
-    private Dictionary<string, wp_RoomCenterData> wp_Dictionary = new Dictionary<string, wp_RoomCenterData>();
+    public static Dictionary<string, wp_RoomCenterData> wp_Dictionary = new Dictionary<string, wp_RoomCenterData>();
 
     void Start()
     {
@@ -41,6 +41,8 @@ public class Procedural_Script : MonoBehaviour
 
     void Update()
     {
+
+
         if (currentRooms < numberOfRooms && allRoomsInPlace == false)
         {
             AddRoom();
@@ -86,12 +88,13 @@ public class Procedural_Script : MonoBehaviour
         }
         else if (DelaunayManager.IsTriangulationComplete == true && DelaunayManager.isRefinationCompleted == true && MSTManager.IsTreeComplete == true && PathsStarted == false)
         {
-            PathManager.wp_Dictionary = this.wp_Dictionary;
-            PathGenerator.GeneratePaths();
-            var a = MSTManager.MSTree;
+            PathsStarted = true;
+            //PathManager.wp_Dictionary = this.wp_Dictionary;
+            //PathGenerator.GeneratePaths();
+            //var a = MSTManager.MSTree;
 
             DrawUniqueConnections();
-           
+
         }
         
     }
@@ -193,7 +196,7 @@ public class Procedural_Script : MonoBehaviour
         lr.SetPosition(0, new Vector3(p1.X, 0, p1.Z));
         lr.SetPosition(1, new Vector3(p2.X, 0, p2.Z));
 
-        lr.material = new Material(Shader.Find("Sprites/Default")); // Basic material for visibility
+        lr.material = new Material(Shader.Find("Sprites/Default")); 
         lr.startColor = Color.green;
         lr.endColor = Color.green;
     }
@@ -209,13 +212,13 @@ public class Procedural_Script : MonoBehaviour
 
             if (seenEdges.Contains(reverseEdge))
             {
-                return true; // Found a duplicate connection (A -> B and B -> A)
+                return true; // duplicate conection
             }
 
             seenEdges.Add(edge);
         }
 
-        return false; // No duplicates found
+        return false; // No duplicates 
     }
 
 }

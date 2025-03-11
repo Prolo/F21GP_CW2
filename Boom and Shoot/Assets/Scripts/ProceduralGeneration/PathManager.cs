@@ -3,6 +3,16 @@ using UnityEngine;
 
 public static class PathManager
 {
-    public static Dictionary<string, wp_RoomCenterData> wp_Dictionary = new Dictionary<string, wp_RoomCenterData>();
+    public static Queue<(wp_Point, wp_Point)> pathQueue = new Queue<(wp_Point, wp_Point)>();
+
+    public static List<wp_Path_Data> openNodes = new List<wp_Path_Data>();
+
+    public static List<wp_Path_Data> closedNodes = new List<wp_Path_Data>();
+
+    public static List<List<wp_Path_Data>> allPaths = new List<List<wp_Path_Data>>();
+
+    public static bool pathsFinished = false;
+
+    public static bool buildingpaths = false;
 
 }

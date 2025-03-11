@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 // Represents a triangle with three wp_Points
@@ -15,6 +16,11 @@ public class wp_Point
     {
         this.X = X;
         this.Z = Z;
+    }
+
+    public wp_RoomCenterData toRCD()
+    {
+        return Procedural_Script.wp_Dictionary[objectID];
     }
 }
 
