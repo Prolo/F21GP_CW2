@@ -93,7 +93,7 @@ public class Procedural_Script : MonoBehaviour
             //PathGenerator.GeneratePaths();
             //var a = MSTManager.MSTree;
 
-            DrawUniqueConnections();
+            //DrawUniqueConnections();
 
         }
         

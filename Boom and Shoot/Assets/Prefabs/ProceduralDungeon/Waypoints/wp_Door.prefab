@@ -44,3 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89b03e07e23bd4147a194e7f005c2397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Parent: {fileID: 0}
+  fCost: 0
+  isPath: 0
+  isDoor: 0
+  passageNode: 1
