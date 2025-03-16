@@ -1,40 +1,46 @@
-using System.Collections;
 using UnityEngine;
-[RequireComponent(typeof(Animator))]
+
 public class Gun : MonoBehaviour
 {
-    [SerializeField]private bool AddBulletSpread = true;
-    [SerializeField]private Vector3 BulletSpreadVariance = new Vector3(0.1f,0.1f,0.1f);
-    [SerializeField] private ParticleSystem ShootingSystem;
+    [SerializeField] private bool AddBulletSpread = true;
+    [SerializeField] private Vector3 BulletSpreadVariance = new Vector3(0.1f, 0.1f, 0.1f);
     [SerializeField] private Transform BulletSpawnPoint;
     [SerializeField] private ParticleSystem ImpactParticleSystem;
-    [SerializeField] private TrailRenderer BulletTrail;
     [SerializeField] private float ShootDelay = 0.5f;
     [SerializeField] private LayerMask Mask;
-
-    private Animator Animator;
+    [SerializeField] private float LaserMaxDistance = 100f; 
 
     private float LastShootTime;
+    private LineRenderer laserLine;
 
-    private void Awake()
+    private void Start()
     {
-        Animator = GetComponent<Animator>();
+        laserLine = gameObject.AddComponent<LineRenderer>();
+        laserLine.startWidth = 0.02f;
+        laserLine.endWidth = 0.02f;
+        laserLine.material = new Material(Shader.Find("Unlit/Color"));
+        laserLine.material.color = Color.red; 
     }
-    
+
+    private void Update()
+    {
+        UpdateLaserPointer();
+    }
+
     public void Shoot()
     {
-        Debug.Log("Checking");
-       if(LastShootTime +  ShootDelay < Time.deltaTime)
+        Debug.Log("Shooting Attempted");
+
+        if (Time.time >= LastShootTime + ShootDelay) 
         {
-            ShootingSystem.Play();
             Vector3 direction = GetDirection();
 
-            if(Physics.Raycast(BulletSpawnPoint.position,direction,out RaycastHit hit, float.MaxValue, Mask))
+            if (Physics.Raycast(BulletSpawnPoint.position, direction, out RaycastHit hit, float.MaxValue, Mask))
             {
-                TrailRenderer trail = Instantiate(BulletTrail, BulletSpawnPoint.position, Quaternion.identity);
-                StartCoroutine(SpawnTrail(trail, hit));
-                LastShootTime = Time.deltaTime;
+                Instantiate(ImpactParticleSystem, hit.point, Quaternion.LookRotation(hit.normal)); 
             }
+
+            LastShootTime = Time.time; 
         }
     }
 
@@ -44,26 +50,31 @@ public class Gun : MonoBehaviour
         if (AddBulletSpread)
         {
             direction += new Vector3(
-                Random.Range(-BulletSpreadVariance.x,BulletSpreadVariance.x),
-                Random.Range(-BulletSpreadVariance.y,BulletSpreadVariance.y),
-                Random.Range(-BulletSpreadVariance.z,BulletSpreadVariance.z));
+                Random.Range(-BulletSpreadVariance.x, BulletSpreadVariance.x),
+                Random.Range(-BulletSpreadVariance.y, BulletSpreadVariance.y),
+                Random.Range(-BulletSpreadVariance.z, BulletSpreadVariance.z));
             direction.Normalize();
         }
-        return direction; 
+        return direction;
     }
 
-    private IEnumerator SpawnTrail(TrailRenderer Trail,RaycastHit Hit)
+    private void UpdateLaserPointer()
     {
-        float time = 0;
-        Vector3 startPosition = Trail.transform.position;
-        while (time < 1)
+        if (laserLine == null) return;
+
+        Vector3 direction = transform.forward;
+        Vector3 laserEndPoint;
+
+        if (Physics.Raycast(BulletSpawnPoint.position, direction, out RaycastHit hit, LaserMaxDistance, Mask))
         {
-            Trail.transform.position = Vector3.Lerp(startPosition, Hit.point, time);
-            time += Time.deltaTime / Trail.time;
-            yield return null;
+            laserEndPoint = hit.point; 
         }
-        Trail.transform.position = Hit.point;
-        Instantiate(ImpactParticleSystem, Hit.point, Quaternion.LookRotation(Hit.normal));
-        Destroy(Trail.gameObject, Trail.time);
+        else
+        {
+            laserEndPoint = BulletSpawnPoint.position + direction * LaserMaxDistance; 
+        }
+
+        laserLine.SetPosition(0, BulletSpawnPoint.position);
+        laserLine.SetPosition(1, laserEndPoint);
     }
 }

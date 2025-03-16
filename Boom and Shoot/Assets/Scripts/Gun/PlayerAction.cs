@@ -3,8 +3,11 @@ using UnityEngine;
 public class PlayerAction : MonoBehaviour
 {
     [SerializeField] private Gun Gun;
-    public void OnShoot()
+    private void Update()
     {
-        Gun.Shoot();
+        if (Input.GetMouseButtonDown(0)) // Left mouse button
+        {
+            Gun.Shoot();
+        }
     }
 }
