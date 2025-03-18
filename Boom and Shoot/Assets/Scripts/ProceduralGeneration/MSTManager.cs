@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class MSTManager
+public static class MSTManager
 {
     public static bool IsTreeComplete = false; // Completion flag
 

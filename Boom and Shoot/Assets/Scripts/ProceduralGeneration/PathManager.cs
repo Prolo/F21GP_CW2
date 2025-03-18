@@ -15,4 +15,8 @@ public static class PathManager
 
     public static bool buildingpaths = false;
 
+    public static bool buildingWalls = false;
+
+    public static bool wallsFinished = false;
+
 }
