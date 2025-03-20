@@ -17,6 +17,9 @@ public class PathGenerator : MonoBehaviour
     [SerializeField]
     public GameObject FloorTile;
 
+    [SerializeField]
+    public GameObject WallTile;
+
     void Start()
     {
         
@@ -83,6 +86,11 @@ public class PathGenerator : MonoBehaviour
             {
                 BuildPaths();
                 PathManager.buildingpaths = true;
+            }
+            else if (PathManager.pathsFinished == true && PathManager.buildingpaths == true && PathManager.buildingWalls == false)
+            {
+                BuildWalls();
+                PathManager.buildingWalls = true;
             }
         
         
@@ -194,6 +202,22 @@ public class PathGenerator : MonoBehaviour
             }
         }
         
+
+    }
+
+
+    public void BuildWalls()
+    {
+        //GameObject wallPrefab = Resources.Load<GameObject>("FloorTile");
+
+        foreach (List<wp_Path_Data> path in PathManager.allPaths)
+        {
+            foreach (wp_Path_Data node in path)
+            {
+                node.CreateWall(WallTile);
+            }
+        }
+
 
     }
 

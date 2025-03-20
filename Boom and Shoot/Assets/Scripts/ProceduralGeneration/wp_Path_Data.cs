@@ -91,4 +91,32 @@ public class wp_Path_Data : MonoBehaviour
 
         return list; // Return all successfully created paths
     }
+
+    public void CreateWall(GameObject wallTile)
+    {
+        Vector3 north = transform.position + Vector3.forward; // (0, 1, 1) //+ Vector3.up
+        Vector3 south = transform.position + Vector3.back;    // (0, 1, -1)
+        Vector3 east = transform.position + Vector3.right;   // (1, 1, 0)
+        Vector3 west = transform.position + Vector3.left;    // (-1, 1, 0)
+
+        if (!Physics.CheckSphere(north, 0.4f))
+        {
+            Instantiate(wallTile, north + new Vector3(0, 0, -0.5f), Quaternion.identity);
+        }
+
+        if (!Physics.CheckSphere(south, 0.4f))
+        {
+            Instantiate(wallTile, south + new Vector3(0, 0, +0.5f), Quaternion.identity);
+        }
+
+        if (!Physics.CheckSphere(east, 0.4f))
+        {
+            Instantiate(wallTile, east + new Vector3(-0.5f, 0, 0), Quaternion.Euler(0, 90, 0)); //
+        }
+
+        if (!Physics.CheckSphere(west, 0.4f))
+        {
+            Instantiate(wallTile, west + new Vector3(0.5f, 0, 0), Quaternion.Euler(0, 90, 0));
+        }
+    }
 }

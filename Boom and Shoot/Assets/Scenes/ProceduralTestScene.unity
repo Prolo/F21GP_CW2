@@ -191,6 +191,7 @@ MonoBehaviour:
   currentEnd: {fileID: 0}
   wpPathPrefab: {fileID: 7436029226641920012, guid: 247cef1bcc90c3143b673ae08f4f3d09, type: 3}
   FloorTile: {fileID: 7588320906972414014, guid: 5cd0178e00c0e614f9ab5c0390e94929, type: 3}
+  WallTile: {fileID: 6179281175264755083, guid: a4732fe1fe18f9246a5995beda9e8021, type: 3}
 --- !u!1 &1089706399
 GameObject:
   m_ObjectHideFlags: 0
