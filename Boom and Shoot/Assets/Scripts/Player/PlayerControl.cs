@@ -1,9 +1,12 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour
 {
+    // related to player movement
+    [Header("Movement Variables")]
     [SerializeField] Transform playerCam, groundCheck;
     [SerializeField][Range(0.0f, 0.5f)] private float camSmoothTime = 0.03f, moveSmoothtime = 0.3f;
     [SerializeField] private bool cursorLock = true, isGrounded;
@@ -15,6 +18,22 @@ public class PlayerControl : MonoBehaviour
     Vector3 velocity;
     CharacterController controller;
 
+    // Related to system tasks, such as colour adjustment and scene transitions
+    [Header("System Variables")]
+    [SerializeField] private GameObject fadeOut, fadeIn;
+    [SerializeField] private float waitTime;
+    [SerializeField] private string targetScene;
+    [SerializeField] private bool isInvulnerable = false;
+
+    // Signals sent to update the canvas
+    [Header("Player related signals")]
+    [SerializeField] private SignalSender hpSignal, pickupSignal;
+
+    // Players stats
+    [Header("Player Stats")]
+    [SerializeField] private FloatValue currHP, maxHP;
+    [SerializeField] private Inventory playerInv;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,6 +43,12 @@ public class PlayerControl : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = true;
         }
+
+        // initial start up, such as player state and sending values to the canvas
+        Application.targetFrameRate = 60;
+        // currentState = PlayerState.walk;
+        hpSignal.Raise();
+        pickupSignal.Raise();
     }
 
     // Update is called once per frame
@@ -94,5 +119,57 @@ public class PlayerControl : MonoBehaviour
         yield return new WaitUntil(IsGrounded);
         // resets jump count
         jumpCount = 0;
+    }
+
+    public void damaged(float time, float damage)
+    {
+        // if the player is invulnerable, don't apply damage
+        if (isInvulnerable)
+        {
+            return;
+        }
+
+        // lowers the players current HP
+        currHP.runtimeValue -= damage;
+        hpSignal.Raise();
+
+        // activates iframes
+        if (currHP.runtimeValue > 0)
+        {
+            StartCoroutine(invulnTime(time));
+        }
+        // if the players HP is now 0, trigger gameover.
+        else if (currHP.runtimeValue <= 0)
+        {
+            targetScene = "Game Over";
+            StartCoroutine(FadeCo());
+        }
+
+    }
+    private IEnumerator FadeCo()
+    {
+        if (fadeIn != null)
+        {
+            Instantiate(fadeIn, Vector3.zero, Quaternion.identity);
+        }
+        yield return new WaitForSeconds(waitTime);
+        currHP.runtimeValue = maxHP.runtimeValue * 2;
+        hpSignal.Raise();
+        AsyncOperation op = SceneManager.LoadSceneAsync(targetScene);
+        while (op.isDone)
+        {
+            yield return null;
+        }
+
+    }
+
+    private IEnumerator invulnTime(float time)
+    {
+
+        isInvulnerable = true;
+        // col.a = 0.5f;
+        yield return new WaitForSeconds(time);
+        isInvulnerable = false;
+        // col.a = 1f;
     }
 }
