@@ -12,9 +12,14 @@ public class HealthPotion : Powerup
     [SerializeField] private FloatValue playerHealth, lifeContainers;
     
     // The amount to increase the players HP by
-    [SerializeField] private float amountToIncrease;
+    [SerializeField] private float amountToIncrease, rotationSpeed = 100f;
     
     [SerializeField] public bool active = true;
+
+    private void Update()
+    {
+        transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
+    }
 
     public void OnTriggerEnter(Collider collision)
     {
