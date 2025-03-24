@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class HitscanWeaponTester : MonoBehaviour
 {
-    private Transform fireOrigin;  
-    public float maxRange = 45f;
-    public LayerMask hitMask;
-    public int baseDamage = 20;
+    private Transform fireOrigin;
+    [SerializeField] private float maxRange = 45f;
+    [SerializeField] private LayerMask hitMask;
+    [SerializeField] private int baseDamage = 20;
+    [SerializeField] private float baseAccurateRange = 20f;
 
     void Start()
     {
@@ -24,12 +25,12 @@ public class HitscanWeaponTester : MonoBehaviour
 
     void Fire()
     {
-        // Ensure fireOrigin is always correct (important for dynamic movement)
+
         fireOrigin = Camera.main.transform;
 
         Ray ray = new Ray(fireOrigin.position, fireOrigin.forward);
 
-        // Draw a debug line to visualize the raycast in Scene View
+        
         Debug.DrawRay(ray.origin, ray.direction * maxRange, Color.red, 1.0f);
 
         if (Physics.Raycast(ray, out RaycastHit hitInfo, maxRange, hitMask))  
@@ -44,16 +45,16 @@ public class HitscanWeaponTester : MonoBehaviour
                     float illum = enemy.GetComponent<LightDetector>().illuminationLevel;
 
                     // Introduce a chance to miss based on darkness
-                    float missChance = Mathf.Lerp(0.2f, 1f, 1f - illum);
+                    float hitChance = Mathf.Lerp(0.2f, 1f, illum);
                     // More darkness = higher miss chance
-                    if (Random.value < missChance)  // Random.value is between 0 and 1
+                    if (Random.value > hitChance)  // Random.value is between 0 and 1
                     {
                         Debug.Log("Shot missed due to darkness!");
                         return;  // shot is a complete miss
                     }
 
                     // Adjust accuracy range based on illumination
-                    float baseAccurateRange = 30f;
+                    
                     float darkRange = 0.5f * baseAccurateRange;
                     float dynamicAccurateRange = Mathf.Lerp(darkRange, baseAccurateRange, illum);
 
