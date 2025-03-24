@@ -185,6 +185,16 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 0
+  fadeOut: {fileID: 5648383955732714574, guid: bd07647491c645446b97ce4ad397881c, type: 3}
+  fadeIn: {fileID: 6493171022990901329, guid: 9335037d6c90a524bbb66346c9853e8f, type: 3}
+  waitTime: 3
+  targetScene: 
+  isInvulnerable: 0
+  hpSignal: {fileID: 11400000, guid: 29dc98bf7186f514385168fdd2d206e3, type: 2}
+  pickupSignal: {fileID: 11400000, guid: 7d941a5f0a952c248b7beda6584e30e0, type: 2}
+  currHP: {fileID: 11400000, guid: bf201c8a94796b641a33b09011575541, type: 2}
+  maxHP: {fileID: 11400000, guid: 6781e2990aed1d34aa6fc2f2fc134177, type: 2}
+  playerInv: {fileID: 11400000, guid: 2c270198ee7ba0647b7c5b5a752a68cb, type: 2}
 --- !u!1 &1365711513921642589
 GameObject:
   m_ObjectHideFlags: 0
