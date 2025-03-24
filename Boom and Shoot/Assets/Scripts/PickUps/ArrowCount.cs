@@ -15,7 +15,7 @@ public class ArrowCount : Powerup
     public void Start()
     {
         pickUpSignal.Raise();
-        maxArrows = quiver.runtimeValue-1;
+        maxArrows = quiver.startValue*2;
     }
 
     public void OnTriggerEnter(Collider collision)
