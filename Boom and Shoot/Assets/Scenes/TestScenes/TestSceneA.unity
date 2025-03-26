@@ -941,17 +941,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3eabbf3321235e244bd8bc95c92943d4, type: 3}
---- !u!114 &1324875154 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4458920714644791458, guid: fa647b6d788d8f94684f8f86b059ce57, type: 3}
-  m_PrefabInstance: {fileID: 6138377059837913824}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f26d749d0b1019d4baec1d08a5a0c67a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1496480243
 GameObject:
   m_ObjectHideFlags: 0
@@ -1516,26 +1505,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4296756735332051267, guid: 497a55424961d5c4093b1a37cc34dd67, type: 3}
-      propertyPath: waitTime
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4296756735332051267, guid: 497a55424961d5c4093b1a37cc34dd67, type: 3}
-      propertyPath: targetScene
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5862728101670278638, guid: 497a55424961d5c4093b1a37cc34dd67, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7487039045626300712, guid: 497a55424961d5c4093b1a37cc34dd67, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7674216064710967177, guid: 497a55424961d5c4093b1a37cc34dd67, type: 3}
-      propertyPath: baseDamage
-      value: 20
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1836,10 +1805,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 1834883834882457837, guid: fa647b6d788d8f94684f8f86b059ce57, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
-      objectReference: {fileID: 0}
     - target: {fileID: 7271097750945319478, guid: fa647b6d788d8f94684f8f86b059ce57, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1880,14 +1845,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8330894579568427684, guid: fa647b6d788d8f94684f8f86b059ce57, type: 3}
-      propertyPath: HP
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 8330894579568427684, guid: fa647b6d788d8f94684f8f86b059ce57, type: 3}
-      propertyPath: lightDetector
-      value: 
-      objectReference: {fileID: 1324875154}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
