@@ -187,7 +187,7 @@ MonoBehaviour:
     m_Bits: 0
   fadeOut: {fileID: 5648383955732714574, guid: bd07647491c645446b97ce4ad397881c, type: 3}
   fadeIn: {fileID: 6493171022990901329, guid: 9335037d6c90a524bbb66346c9853e8f, type: 3}
-  waitTime: 3
+  waitTime: 0.5
   targetScene: 
   isInvulnerable: 0
   hpSignal: {fileID: 11400000, guid: 29dc98bf7186f514385168fdd2d206e3, type: 2}
