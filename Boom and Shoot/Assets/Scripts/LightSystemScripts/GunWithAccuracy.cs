@@ -9,7 +9,7 @@ public class GunWithAccuracy : MonoBehaviour
     [SerializeField] private float ShootDelay = 0.5f;
     [SerializeField] private LayerMask Mask;
     [SerializeField] private float LaserMaxDistance = 100f;
-    [SerializeField] private int baseDamage = 20;
+    [SerializeField] private float baseDamage = 20f;
     [SerializeField] private float baseAccurateRange = 30f;
     [SerializeField] private FloatValue quiver;
     [SerializeField] private SignalSender ammoUpdate;
@@ -58,7 +58,7 @@ public class GunWithAccuracy : MonoBehaviour
 
                 if (hit.collider.CompareTag("Enemy"))
                 {
-                    Enemy enemy = hit.collider.GetComponent<Enemy>();
+                    EnemyScript enemy = hit.collider.GetComponent<EnemyScript>();
                     if (enemy != null)
                     {
                         float illum = enemy.GetComponent<LightDetector>().illuminationLevel;
@@ -92,7 +92,7 @@ public class GunWithAccuracy : MonoBehaviour
                             float beyondDist = distance - dynamicAccurateRange;
                             float rangeSpan = LaserMaxDistance - dynamicAccurateRange;
                             float accuracyFactor = 1f - (beyondDist / rangeSpan);
-                            int damage = Mathf.RoundToInt(baseDamage * accuracyFactor);
+                            float damage = Mathf.RoundToInt(baseDamage * accuracyFactor);
                             if (damage > 0)
                             {
                                 enemy.ApplyDamage(damage);

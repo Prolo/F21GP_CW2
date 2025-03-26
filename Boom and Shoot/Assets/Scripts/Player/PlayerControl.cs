@@ -141,7 +141,7 @@ public class PlayerControl : MonoBehaviour
         // if the players HP is now 0, trigger gameover.
         else if (currHP.runtimeValue <= 0)
         {
-            targetScene = "Game Over";
+            targetScene = "GAMEOVER";
             StartCoroutine(FadeCo());
         }
 

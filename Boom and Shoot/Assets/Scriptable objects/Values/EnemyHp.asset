@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df849cef824bd9245a4cd10e5133a1e9, type: 3}
   m_Name: EnemyHp
   m_EditorClassIdentifier: 
-  startValue: 4
-  runtimeValue: 4
+  startValue: 50
+  runtimeValue: 50

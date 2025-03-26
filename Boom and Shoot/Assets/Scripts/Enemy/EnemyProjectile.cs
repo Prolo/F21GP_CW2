@@ -3,7 +3,8 @@ using UnityEngine;
 public class EnemyProjectile : MonoBehaviour
 {
     // Used for the projectiles speed and how long it lasts
-    [SerializeField] private float bulletSpeed, lifeTime;
+    [SerializeField] private float bulletSpeed, lifeTime, bulletDamage;
+    
 
     void Start()
     {
@@ -20,6 +21,10 @@ public class EnemyProjectile : MonoBehaviour
     {
             if (collision.tag != "enemy")
             {
+                if (collision.gameObject.CompareTag("Player"))
+                {
+                collision.GetComponent<PlayerControl>().damaged(1, bulletDamage);
+                }
                 // Destroy the gameobject when it hits a collider
                 Destroy(this.gameObject);
             }
