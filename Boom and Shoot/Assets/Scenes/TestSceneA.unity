@@ -787,7 +787,7 @@ GameObject:
   - component: {fileID: 1265761122}
   - component: {fileID: 1265761121}
   - component: {fileID: 1265761120}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1464,6 +1464,14 @@ PrefabInstance:
     - target: {fileID: 817412035634007965, guid: 497a55424961d5c4093b1a37cc34dd67, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 817412035634007965, guid: 497a55424961d5c4093b1a37cc34dd67, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1063945419395753877, guid: 497a55424961d5c4093b1a37cc34dd67, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 6263
       objectReference: {fileID: 0}
     - target: {fileID: 2308283644039313657, guid: 497a55424961d5c4093b1a37cc34dd67, type: 3}
       propertyPath: m_LocalPosition.x

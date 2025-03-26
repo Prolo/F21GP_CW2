@@ -23,8 +23,8 @@ TagManager:
   - enemyMarker
   - occlusionMask
   - hitMask
-  - 
-  - 
+  - ceiling
+  - pickups
   - 
   - 
   - 

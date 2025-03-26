@@ -12,6 +12,7 @@ public class GunWithAccuracy : MonoBehaviour
     [SerializeField] private int baseDamage = 20;
     [SerializeField] private float baseAccurateRange = 30f;
     [SerializeField] private FloatValue quiver;
+    [SerializeField] private SignalSender ammoUpdate;
 
     private float LastShootTime;
     private LineRenderer laserLine;
@@ -29,7 +30,7 @@ public class GunWithAccuracy : MonoBehaviour
     {
         UpdateLaserPointer();
 
-        if (Input.GetKeyDown(KeyCode.G))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Shoot();
         }
@@ -53,6 +54,7 @@ public class GunWithAccuracy : MonoBehaviour
                 Instantiate(ImpactParticleSystem, hit.point, Quaternion.LookRotation(hit.normal));
 
                 quiver.runtimeValue--;
+                ammoUpdate.Raise();
 
                 if (hit.collider.CompareTag("Enemy"))
                 {
@@ -103,6 +105,7 @@ public class GunWithAccuracy : MonoBehaviour
             {
                 Debug.Log("Missed! No hit detected.");
                 quiver.runtimeValue--;
+                ammoUpdate.Raise();
             }
 
             LastShootTime = Time.time;
