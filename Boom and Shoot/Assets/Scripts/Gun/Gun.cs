@@ -29,11 +29,10 @@ public class Gun : MonoBehaviour
 
     public void Shoot()
     {
-        Debug.Log("Shooting Attempted");
-
         if (Time.time >= LastShootTime + ShootDelay) 
         {
             Vector3 direction = GetDirection();
+            Debug.Log("shooting");
 
             if (Physics.Raycast(BulletSpawnPoint.position, direction, out RaycastHit hit, float.MaxValue, Mask))
             {
