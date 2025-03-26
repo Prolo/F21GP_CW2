@@ -12,7 +12,7 @@ public class Inventory : ScriptableObject
     // current item that player has collected, for display purposes
     public Item currItem;
     public List<Item> items = new List<Item>();
-    public FloatValue keys, bigKeys, score;    
+    public FloatValue keys, bigKeys, score, ammo, grenades;    
 
     public void OnEnable()
     {
@@ -21,6 +21,9 @@ public class Inventory : ScriptableObject
         keys.runtimeValue = 0;
         bigKeys.runtimeValue = 0;
         score.runtimeValue = 0;
+        ammo.runtimeValue = ammo.startValue;
+        grenades.runtimeValue = grenades.startValue;
+        
     }
 
     public void AddItem(Item item)
