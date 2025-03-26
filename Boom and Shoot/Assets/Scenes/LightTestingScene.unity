@@ -1555,6 +1555,7 @@ MonoBehaviour:
   LaserMaxDistance: 100
   baseDamage: 20
   baseAccurateRange: 20
+  quiver: {fileID: 11400000, guid: be3eaa317cd053d42a85cf350920203b, type: 2}
 --- !u!4 &1826093892 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8796441132640837979, guid: 8165906cc24b7b54ca1b5a48c634604c, type: 3}

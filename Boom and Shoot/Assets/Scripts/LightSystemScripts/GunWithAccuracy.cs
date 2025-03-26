@@ -12,6 +12,7 @@ public class GunWithAccuracy : MonoBehaviour
     [SerializeField] private float LaserMaxDistance = 100f;
     [SerializeField] private int baseDamage = 20;
     [SerializeField] private float baseAccurateRange = 30f;
+    [SerializeField] private FloatValue quiver;
 
     private float LastShootTime;
     private LineRenderer laserLine;
@@ -37,6 +38,12 @@ public class GunWithAccuracy : MonoBehaviour
 
     public void Shoot()
     {
+        if (quiver.runtimeValue <= 0)
+        {
+            Debug.Log("Cannot shoot: No ammo!");
+            return;
+        }
+
         if (Time.time >= LastShootTime + ShootDelay)
         {
             Vector3 direction = GetDirection();
@@ -45,6 +52,8 @@ public class GunWithAccuracy : MonoBehaviour
             {
                 Debug.Log("Hit: " + hit.collider.name + " at distance: " + hit.distance);
                 Instantiate(ImpactParticleSystem, hit.point, Quaternion.LookRotation(hit.normal));
+
+                quiver.runtimeValue--;
 
                 if (hit.collider.CompareTag("Enemy"))
                 {
@@ -94,6 +103,7 @@ public class GunWithAccuracy : MonoBehaviour
             else
             {
                 Debug.Log("Missed! No hit detected.");
+                quiver.runtimeValue--;
             }
 
             LastShootTime = Time.time;
