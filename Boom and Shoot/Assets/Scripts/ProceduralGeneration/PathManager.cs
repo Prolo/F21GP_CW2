@@ -19,4 +19,8 @@ public static class PathManager
 
     public static bool wallsFinished = false;
 
+    public static bool closingDoors = false;
+
+    public static bool doorsClosed = false;
+
 }

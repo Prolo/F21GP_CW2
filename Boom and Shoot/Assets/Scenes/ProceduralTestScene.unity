@@ -150,13 +150,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rooms:
-  - {fileID: 6593551457238701845, guid: 017ace5b9b62c78439cbba3d07420a1f, type: 3}
   - {fileID: 164629541059459997, guid: f658676982db32f48bf3592d0a24dae7, type: 3}
   - {fileID: 164629541059459997, guid: 507408c272685604eaa1eb203cb204ae, type: 3}
   - {fileID: 164629541059459997, guid: 51e509868df3d80459b474b8c5d63532, type: 3}
   startRoom: {fileID: 1999347402391225194, guid: 527bd1ceab3928a44b22ee956bee1d03, type: 3}
   finishRoom: {fileID: 8889533646547674066, guid: 946f2fe4786391945b3601a6a246c4ca, type: 3}
-  dungeonDistance: 100
+  dungeonDistance: 125
   numberOfRooms: 25
   currentRooms: 0
   wp_RoomCenters: []

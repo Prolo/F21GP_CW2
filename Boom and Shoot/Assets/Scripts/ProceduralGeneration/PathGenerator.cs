@@ -92,9 +92,33 @@ public class PathGenerator : MonoBehaviour
                 BuildWalls();
                 PathManager.buildingWalls = true;
             }
-        
-        
+            else if (PathManager.pathsFinished == true && PathManager.buildingpaths == true && PathManager.buildingWalls == true && PathManager.closingDoors == false)
+            {
+                CloseDoors(DelaunayManager.points);
+                PathManager.closingDoors = true;
+            }
+            else if(PathManager.pathsFinished == true && PathManager.buildingpaths == true && PathManager.buildingWalls == true && PathManager.closingDoors == true)
+            { 
+            //the end
+            }
+
+
         }
+    }
+
+    public void CloseDoors(List<wp_Point> points)
+    {
+        List<GameObject> roomDoors = new List<GameObject>();
+        foreach (wp_Point point in points)
+        {
+            roomDoors = GetRoomDoors(point.toRCD().transform);
+
+            foreach (GameObject door in roomDoors)
+            {
+                door.GetComponentInChildren<wp_Path_Data>().CreateWall(WallTile);
+            }
+        }
+
     }
 
 
@@ -175,7 +199,7 @@ public class PathGenerator : MonoBehaviour
     }
 
 
-    public List<GameObject> GetRoomDoors(Transform obj)
+    public static List<GameObject> GetRoomDoors(Transform obj)
     {
         List<GameObject> roomDoors = new List<GameObject>();
 
