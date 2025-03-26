@@ -115,6 +115,7 @@ public class PathGenerator : MonoBehaviour
 
             foreach (GameObject door in roomDoors)
             {
+                if(door.GetComponentInChildren<wp_Path_Data>().isDoor == false)
                 door.GetComponentInChildren<wp_Path_Data>().CreateWall(WallTile);
             }
         }
