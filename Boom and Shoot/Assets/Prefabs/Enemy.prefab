@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9048304872507577940}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shotPoint
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -45,9 +45,10 @@ GameObject:
   - component: {fileID: 3636728657821419789}
   - component: {fileID: 4703521814509189819}
   - component: {fileID: 8330894579568427684}
-  m_Layer: 0
+  - component: {fileID: 4458920714644791458}
+  m_Layer: 10
   m_Name: Enemy
-  m_TagString: enemy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62,8 +63,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 1.59, z: 43.69}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3606140828225864573}
   - {fileID: 8153088022316244122}
@@ -186,10 +187,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack: 0
   enemyName: 
-  HP: 4
+  HP: 50
   speed: 2
   maxHealth: {fileID: 11400000, guid: ee487a91db5041747b7e52a28dd04d05, type: 2}
   currLevel: {fileID: 11400000, guid: db8fc2ebad0b9744e815cb8dc01eb0bb, type: 2}
+  lightDetector: {fileID: 4458920714644791458}
   current: 0
   target: {fileID: 0}
   home: {fileID: 0}
@@ -200,6 +202,21 @@ MonoBehaviour:
   attackArea: 15
   startBetweenShots: 5
   rotateSpeed: 0
+--- !u!114 &4458920714644791458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834883834882457837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f26d749d0b1019d4baec1d08a5a0c67a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  occlusionMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &5042800868845485096
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,7 +246,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 20, z: 0}
-  m_LocalScale: {x: 4, y: 0.1, z: 4}
+  m_LocalScale: {x: 8, y: 0.1, z: 8}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7271097750945319478}
@@ -322,7 +339,7 @@ GameObject:
   - component: {fileID: 7078057912929119514}
   - component: {fileID: 4684475185404747370}
   - component: {fileID: 2964844566582732527}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Orientation (1)
   m_TagString: enemy
   m_Icon: {fileID: 0}

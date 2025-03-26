@@ -16,6 +16,8 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] public string enemyName;
     [SerializeField] public float HP, speed;
     [SerializeField] private FloatValue maxHealth, currLevel;
+    [SerializeField] private LightDetector lightDetector;
+
 
     // Events that the enemy triggers
     [Header("Events")]
@@ -27,13 +29,14 @@ public class EnemyScript : MonoBehaviour
     {
         // Sets the enemies HP
         HP = maxHealth.startValue + currLevel.runtimeValue-1;
+        lightDetector = GetComponent<LightDetector>();
     }
 
-    private void ApplyDamage(float damage)
+    public void ApplyDamage(float damage)
     {
 
 
-        // Reduces the enemy HP, gives the enemy iframes and triggers the damaged animation
+        // Reduces the enemy HP
         HP -= damage;
 
 

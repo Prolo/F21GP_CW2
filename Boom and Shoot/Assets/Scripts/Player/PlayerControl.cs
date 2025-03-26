@@ -88,7 +88,7 @@ public class PlayerControl : MonoBehaviour
         cameraCap -= currMouseDelta.y * mouseSensitivity;
 
         // locks the players view to 90 degrees either way on the y axis
-        cameraCap = Mathf.Clamp(cameraCap, -30.0f, 30f);
+        cameraCap = Mathf.Clamp(cameraCap, -15f, 15f);
 
         playerCam.localEulerAngles = Vector3.right * cameraCap;
         transform.Rotate(Vector3.up * currMouseDelta.x * mouseSensitivity);
@@ -141,7 +141,7 @@ public class PlayerControl : MonoBehaviour
         // if the players HP is now 0, trigger gameover.
         else if (currHP.runtimeValue <= 0)
         {
-            targetScene = "Game Over";
+            targetScene = "GAMEOVER";
             StartCoroutine(FadeCo());
         }
 
