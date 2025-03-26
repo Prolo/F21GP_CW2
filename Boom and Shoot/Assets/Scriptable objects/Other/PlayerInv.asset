@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da5183141ba2b974f9d32c8d205ed8d8, type: 3}
+  m_Name: PlayerInv
+  m_EditorClassIdentifier: 
+  currItem: {fileID: 0}
+  items: []
+  keys: {fileID: 11400000, guid: 7c94d6710164b484f9c80c405f8ba774, type: 2}
+  bigKeys: {fileID: 11400000, guid: a474aa43c67094f41bf7ce156a062011, type: 2}
+  score: {fileID: 11400000, guid: ae09be143ad94f84d89b410c56960ea2, type: 2}
+  ammo: {fileID: 11400000, guid: be3eaa317cd053d42a85cf350920203b, type: 2}
+  grenades: {fileID: 11400000, guid: 6403949e4d8d70a4b8b792a67c5a18e9, type: 2}
