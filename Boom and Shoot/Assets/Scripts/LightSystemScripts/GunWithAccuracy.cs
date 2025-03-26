@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class GunWithAccuracy : MonoBehaviour
 {
-    [SerializeField] private bool AddBulletSpread = true;
-    [SerializeField] private Vector3 BulletSpreadVariance = new Vector3(0.1f, 0.1f, 0.1f);
+
     [SerializeField] private Transform BulletSpawnPoint;
     [SerializeField] private ParticleSystem ImpactParticleSystem;
     [SerializeField] private float ShootDelay = 0.5f;
@@ -113,14 +112,7 @@ public class GunWithAccuracy : MonoBehaviour
     private Vector3 GetDirection()
     {
         Vector3 direction = transform.forward;
-        if (AddBulletSpread)
-        {
-            direction += new Vector3(
-                Random.Range(-BulletSpreadVariance.x, BulletSpreadVariance.x),
-                Random.Range(-BulletSpreadVariance.y, BulletSpreadVariance.y),
-                Random.Range(-BulletSpreadVariance.z, BulletSpreadVariance.z));
-            direction.Normalize();
-        }
+
         return direction;
     }
 
