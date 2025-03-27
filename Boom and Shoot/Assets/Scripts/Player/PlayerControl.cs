@@ -20,10 +20,11 @@ public class PlayerControl : MonoBehaviour
 
     // Related to system tasks, such as colour adjustment and scene transitions
     [Header("System Variables")]
-    [SerializeField] private GameObject fadeOut, fadeIn;
-    [SerializeField] private float waitTime;
+    [SerializeField] private GameObject fadeOut, fadeIn, lightGrenadePrefab;
+    [SerializeField] private float waitTime, throwForce;
     [SerializeField] private string targetScene;
     [SerializeField] private bool isInvulnerable = false;
+    [SerializeField] private Transform throwPoint;
 
     // Signals sent to update the canvas
     [Header("Player related signals")]
@@ -56,6 +57,10 @@ public class PlayerControl : MonoBehaviour
     {
         MoveCharacter();
         MoveMouse();
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            ThrowGrenade();
+        }
     }
 
     void MoveCharacter()
@@ -171,5 +176,13 @@ public class PlayerControl : MonoBehaviour
         yield return new WaitForSeconds(time);
         isInvulnerable = false;
         // col.a = 1f;
+    }
+
+    void ThrowGrenade()
+    {
+        GameObject grenade = Instantiate(lightGrenadePrefab, throwPoint.position, throwPoint.rotation);
+        Rigidbody rb = grenade.GetComponent<Rigidbody>();
+        rb.AddForce(throwPoint.forward * throwForce, ForceMode.Impulse);
+        Debug.Log("Light Grenade Thrown!");
     }
 }

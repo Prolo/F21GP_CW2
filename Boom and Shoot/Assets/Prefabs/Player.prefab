@@ -187,9 +187,12 @@ MonoBehaviour:
     m_Bits: 0
   fadeOut: {fileID: 5648383955732714574, guid: bd07647491c645446b97ce4ad397881c, type: 3}
   fadeIn: {fileID: 6493171022990901329, guid: 9335037d6c90a524bbb66346c9853e8f, type: 3}
+  lightGrenadePrefab: {fileID: 2771798950405277675, guid: 0431447918b02414fa2224fa2ae53753, type: 3}
   waitTime: 0.5
+  throwForce: 10
   targetScene: 
   isInvulnerable: 0
+  throwPoint: {fileID: 9079792564396638766}
   hpSignal: {fileID: 11400000, guid: 29dc98bf7186f514385168fdd2d206e3, type: 2}
   pickupSignal: {fileID: 11400000, guid: 7d941a5f0a952c248b7beda6584e30e0, type: 2}
   currHP: {fileID: 11400000, guid: bf201c8a94796b641a33b09011575541, type: 2}
@@ -591,5 +594,10 @@ PrefabInstance:
 --- !u!4 &3574486574705265633 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8432395127947656503, guid: c3342d36ad7f2964f97523fad5cb3455, type: 3}
+  m_PrefabInstance: {fileID: 4944602921254270678}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &9079792564396638766 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4224135742380602616, guid: c3342d36ad7f2964f97523fad5cb3455, type: 3}
   m_PrefabInstance: {fileID: 4944602921254270678}
   m_PrefabAsset: {fileID: 0}
