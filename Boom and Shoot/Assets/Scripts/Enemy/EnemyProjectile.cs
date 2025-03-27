@@ -19,7 +19,7 @@ public class EnemyProjectile : MonoBehaviour
     }
     private void OnTriggerEnter(Collider collision)
     {
-            if (collision.tag != "enemy")
+            if (collision.tag != "Enemy")
             {
                 if (collision.gameObject.CompareTag("Player"))
                 {
