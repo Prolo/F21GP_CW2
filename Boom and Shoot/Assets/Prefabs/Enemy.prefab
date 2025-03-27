@@ -198,8 +198,8 @@ MonoBehaviour:
   gun: {fileID: 3606140828225864573}
   shotPoint: {fileID: 9048304872507577940}
   projectile: {fileID: 157376187486904033, guid: ab10863e78ed98b4f81800aa3e958b68, type: 3}
-  huntArea: 20
-  attackArea: 15
+  huntArea: 10
+  attackArea: 5
   startBetweenShots: 5
   rotateSpeed: 0
 --- !u!114 &4458920714644791458

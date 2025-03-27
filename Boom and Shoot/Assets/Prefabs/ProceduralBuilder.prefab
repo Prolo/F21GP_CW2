@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1393470790183660033
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4132399816545756974}
+  - component: {fileID: 4051579932376905951}
+  - component: {fileID: 619632788008425110}
+  m_Layer: 0
+  m_Name: ProceduralBuilder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4132399816545756974
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393470790183660033}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4051579932376905951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393470790183660033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6a62207c3d23b94d8b4c48bbd61d844, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rooms:
+  - {fileID: 164629541059459997, guid: f658676982db32f48bf3592d0a24dae7, type: 3}
+  - {fileID: 164629541059459997, guid: 507408c272685604eaa1eb203cb204ae, type: 3}
+  - {fileID: 164629541059459997, guid: 51e509868df3d80459b474b8c5d63532, type: 3}
+  startRoom: {fileID: 1999347402391225194, guid: 527bd1ceab3928a44b22ee956bee1d03, type: 3}
+  finishRoom: {fileID: 8889533646547674066, guid: 946f2fe4786391945b3601a6a246c4ca, type: 3}
+  dungeonDistance: 125
+  numberOfRooms: 25
+  currentRooms: 0
+  wp_RoomCenters: []
+--- !u!114 &619632788008425110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393470790183660033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fc6d997006b0fc448a8008228fee2c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentStart: {fileID: 0}
+  currentEnd: {fileID: 0}
+  wpPathPrefab: {fileID: 7436029226641920012, guid: 247cef1bcc90c3143b673ae08f4f3d09, type: 3}
+  FloorTile: {fileID: 7588320906972414014, guid: 5cd0178e00c0e614f9ab5c0390e94929, type: 3}
+  WallTile: {fileID: 6179281175264755083, guid: a4732fe1fe18f9246a5995beda9e8021, type: 3}
