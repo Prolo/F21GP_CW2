@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 201928380592617331}
   - component: {fileID: 695370701429507297}
   - component: {fileID: 1470782216158890035}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Floor (1)
   m_TagString: Roof
   m_Icon: {fileID: 0}

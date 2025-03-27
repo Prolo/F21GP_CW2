@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 4401602829614990114}
   - component: {fileID: 1485792404107172055}
   - component: {fileID: 2876294203269975260}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Floor (1)
   m_TagString: Roof
   m_Icon: {fileID: 0}
