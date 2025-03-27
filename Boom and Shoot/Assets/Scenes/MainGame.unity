@@ -131,6 +131,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: ProceduralBuilder
       objectReference: {fileID: 0}
+    - target: {fileID: 4051579932376905951, guid: 420db7640eec6e34498bb21719ca7c4a, type: 3}
+      propertyPath: rooms.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051579932376905951, guid: 420db7640eec6e34498bb21719ca7c4a, type: 3}
+      propertyPath: 'rooms.Array.data[0]'
+      value: 
+      objectReference: {fileID: 164629541059459997, guid: f658676982db32f48bf3592d0a24dae7, type: 3}
+    - target: {fileID: 4051579932376905951, guid: 420db7640eec6e34498bb21719ca7c4a, type: 3}
+      propertyPath: 'rooms.Array.data[1]'
+      value: 
+      objectReference: {fileID: 164629541059459997, guid: 507408c272685604eaa1eb203cb204ae, type: 3}
+    - target: {fileID: 4051579932376905951, guid: 420db7640eec6e34498bb21719ca7c4a, type: 3}
+      propertyPath: 'rooms.Array.data[2]'
+      value: 
+      objectReference: {fileID: 164629541059459997, guid: 4376e921a2cb9b149895602e59ca1b43, type: 3}
+    - target: {fileID: 4051579932376905951, guid: 420db7640eec6e34498bb21719ca7c4a, type: 3}
+      propertyPath: 'rooms.Array.data[3]'
+      value: 
+      objectReference: {fileID: 164629541059459997, guid: 1253be4d1853bcc4ea485e433803b5f4, type: 3}
+    - target: {fileID: 4051579932376905951, guid: 420db7640eec6e34498bb21719ca7c4a, type: 3}
+      propertyPath: 'rooms.Array.data[4]'
+      value: 
+      objectReference: {fileID: 164629541059459997, guid: 5f836c11f3f8a5f4ca7eec236ee0643e, type: 3}
+    - target: {fileID: 4051579932376905951, guid: 420db7640eec6e34498bb21719ca7c4a, type: 3}
+      propertyPath: 'rooms.Array.data[5]'
+      value: 
+      objectReference: {fileID: 164629541059459997, guid: 0346bc8da7c5479449ddc30537e7785d, type: 3}
+    - target: {fileID: 4051579932376905951, guid: 420db7640eec6e34498bb21719ca7c4a, type: 3}
+      propertyPath: 'rooms.Array.data[6]'
+      value: 
+      objectReference: {fileID: 164629541059459997, guid: 51e509868df3d80459b474b8c5d63532, type: 3}
+    - target: {fileID: 4051579932376905951, guid: 420db7640eec6e34498bb21719ca7c4a, type: 3}
+      propertyPath: 'rooms.Array.data[7]'
+      value: 
+      objectReference: {fileID: 164629541059459997, guid: d7b0947e8ac4af943997c60538c580b3, type: 3}
+    - target: {fileID: 4051579932376905951, guid: 420db7640eec6e34498bb21719ca7c4a, type: 3}
+      propertyPath: 'rooms.Array.data[8]'
+      value: 
+      objectReference: {fileID: 164629541059459997, guid: b8540e11400af27409e8037ae2b4523d, type: 3}
     - target: {fileID: 4132399816545756974, guid: 420db7640eec6e34498bb21719ca7c4a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -204,8 +244,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0.035955828, g: 0.034353837, b: 0.03773582, a: 1}
+  m_Intensity: 0.8
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
