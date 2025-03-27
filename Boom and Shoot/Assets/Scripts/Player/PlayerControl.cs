@@ -28,11 +28,11 @@ public class PlayerControl : MonoBehaviour
 
     // Signals sent to update the canvas
     [Header("Player related signals")]
-    [SerializeField] private SignalSender hpSignal, pickupSignal;
+    [SerializeField] private SignalSender hpSignal, pickupSignal, grenadeSignal;
 
     // Players stats
     [Header("Player Stats")]
-    [SerializeField] private FloatValue currHP, maxHP;
+    [SerializeField] private FloatValue currHP, maxHP, grenades;
     [SerializeField] private Inventory playerInv;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -57,7 +57,7 @@ public class PlayerControl : MonoBehaviour
     {
         MoveCharacter();
         MoveMouse();
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.G))
         {
             ThrowGrenade();
         }
@@ -183,6 +183,8 @@ public class PlayerControl : MonoBehaviour
         GameObject grenade = Instantiate(lightGrenadePrefab, throwPoint.position, throwPoint.rotation);
         Rigidbody rb = grenade.GetComponent<Rigidbody>();
         rb.AddForce(throwPoint.forward * throwForce, ForceMode.Impulse);
+        grenades.runtimeValue -= 1;
+        grenadeSignal.Raise();
         Debug.Log("Light Grenade Thrown!");
     }
 }
