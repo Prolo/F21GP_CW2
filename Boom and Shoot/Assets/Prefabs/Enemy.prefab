@@ -191,6 +191,8 @@ MonoBehaviour:
   speed: 2
   maxHealth: {fileID: 11400000, guid: ee487a91db5041747b7e52a28dd04d05, type: 2}
   currLevel: {fileID: 11400000, guid: db8fc2ebad0b9744e815cb8dc01eb0bb, type: 2}
+  enemiesKilled: {fileID: 11400000, guid: 1fa9790fe42ec90468cf4b616bdb094b, type: 2}
+  updateKills: {fileID: 11400000, guid: 09b7ea9f6512f4241845a6b7fd55024a, type: 2}
   lightDetector: {fileID: 4458920714644791458}
   current: 0
   target: {fileID: 0}
@@ -200,7 +202,7 @@ MonoBehaviour:
   projectile: {fileID: 157376187486904033, guid: ab10863e78ed98b4f81800aa3e958b68, type: 3}
   huntArea: 10
   attackArea: 5
-  startBetweenShots: 5
+  startBetweenShots: 2
   rotateSpeed: 0
 --- !u!114 &4458920714644791458
 MonoBehaviour:

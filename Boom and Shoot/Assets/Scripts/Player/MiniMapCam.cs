@@ -24,7 +24,7 @@ public class MiniMapCam : MonoBehaviour
         {
             if (hit.collider.CompareTag("Roof")) //if the gameobject has the tag "Roof"
             {
-                objectDict.Add(hit.collider.gameObject.GetInstanceID(), hit.collider.gameObject); //add it to the list
+                objectDict.TryAdd(hit.collider.gameObject.GetInstanceID(), hit.collider.gameObject); //add it to the list
             }
         }
         foreach (var pair in objectDict)

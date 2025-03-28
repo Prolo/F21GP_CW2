@@ -15,7 +15,8 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] public int attack;
     [SerializeField] public string enemyName;
     [SerializeField] public float HP, speed;
-    [SerializeField] private FloatValue maxHealth, currLevel;
+    [SerializeField] private FloatValue maxHealth, currLevel, enemiesKilled;
+    [SerializeField] private SignalSender updateKills;
     [SerializeField] private LightDetector lightDetector;
 
 
@@ -42,7 +43,9 @@ public class EnemyScript : MonoBehaviour
 
         // If the enemy is dead, set it to drop loot, and disable the gameobject
         if (HP <= 0)
-        {            
+        {
+            enemiesKilled.runtimeValue += 1;
+            updateKills.Raise();
             this.gameObject.SetActive(false);
         }
 

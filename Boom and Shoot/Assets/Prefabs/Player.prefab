@@ -177,9 +177,9 @@ MonoBehaviour:
   cursorLock: 1
   isGrounded: 0
   mouseSensitivity: 3.5
-  speed: 10
+  speed: 5
   gravity: -30
-  jumpHeight: 20
+  jumpHeight: 10
   velocityY: 0
   cameraCap: 0
   maxJumps: 1

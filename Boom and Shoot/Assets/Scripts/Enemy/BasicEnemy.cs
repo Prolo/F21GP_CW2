@@ -8,20 +8,21 @@ using UnityEngine.Rendering;
 
 public class BasicEnemy : EnemyScript
 {
-    // Used to determine where the enemy spawns, and where it is targetting for movement and throwing stones
+    // Used to determine where the enemy spawns, and where it is targetting for movement and attacking
     [SerializeField] private Transform target, home, gun, shotPoint;
 
-    // The projectile used by the cyclops
+    // The projectile used by the enemy
     [SerializeField] private GameObject projectile;
 
-    // Floats to determine where the cyclops attacks and hunts in, and how long between shots
+    // Floats to determine where the attacks and hunts in, and how long between shots
     [SerializeField] private float huntArea, attackArea, startBetweenShots, rotateSpeed;
+    
     private float timeBtwnShots;
 
     // check for when the target is in range
     private bool inRange;
 
-    // Cyclop's rigidbody
+    // rigidbody
     private Rigidbody RB;
 
     private void Start()
@@ -58,7 +59,7 @@ public class BasicEnemy : EnemyScript
             float deltaX = transform.position.x - target.position.x;
             float deltaY = transform.position.z - target.position.z;
 
-            Vector3 move = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            Vector3 move = Vector3.MoveTowards(transform.position, target.position, -speed * Time.deltaTime);
             Quaternion rotate = Quaternion.LookRotation(target.position - transform.position);
 
             // Move the rigibody to the target

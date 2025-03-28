@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7821138292803353350
+--- !u!1 &3775965563014733383
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,50 +8,50 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 633889787960396244}
-  - component: {fileID: 7533084244168476073}
-  - component: {fileID: 3233238641537095439}
-  - component: {fileID: 4717080438031963744}
-  - component: {fileID: 6303279427527184433}
-  - component: {fileID: 5742128134320200029}
-  - component: {fileID: 7959083959160767958}
-  m_Layer: 12
-  m_Name: AmmoBox
-  m_TagString: environment
+  - component: {fileID: 8849945923663863977}
+  - component: {fileID: 3919883356945293896}
+  - component: {fileID: 8901047909582461912}
+  - component: {fileID: 8957090665639032227}
+  - component: {fileID: 4563630288332091960}
+  - component: {fileID: 9058177585271697981}
+  - component: {fileID: 1723425313411684422}
+  m_Layer: 0
+  m_Name: GrenadeUp
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &633889787960396244
+--- !u!4 &8849945923663863977
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7821138292803353350}
+  m_GameObject: {fileID: 3775965563014733383}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.3376002, y: 1.639, z: -0.17493773}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: -1.662406, y: 0.535, z: -1.5367358}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7533084244168476073
+--- !u!33 &3919883356945293896
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7821138292803353350}
-  m_Mesh: {fileID: 5827913793287301940, guid: a736403e8215c0644931533af77a47de, type: 3}
---- !u!23 &3233238641537095439
+  m_GameObject: {fileID: 3775965563014733383}
+  m_Mesh: {fileID: 7214874963237807513, guid: 4d19b51c95d71784f9d606a01f2b05d5, type: 3}
+--- !u!23 &8901047909582461912
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7821138292803353350}
+  m_GameObject: {fileID: 3775965563014733383}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -90,13 +90,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4717080438031963744
+--- !u!65 &8957090665639032227
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7821138292803353350}
+  m_GameObject: {fileID: 3775965563014733383}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -109,19 +109,37 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.5, y: 1.5, z: 1.5}
-  m_Center: {x: 0, y: 0.00001642108, z: -0.00000011920929}
---- !u!108 &6303279427527184433
+  m_Size: {x: 0.4, y: 0.5, z: 0.4}
+  m_Center: {x: -0.003984928, y: 0.15830082, z: -0.012287061}
+--- !u!114 &4563630288332091960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3775965563014733383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a21fd04b0abb5540b4effbb6c885cde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickUpSignal: {fileID: 11400000, guid: 7d941a5f0a952c248b7beda6584e30e0, type: 2}
+  grenades: {fileID: 11400000, guid: 6403949e4d8d70a4b8b792a67c5a18e9, type: 2}
+  maxGrenades: 0
+  amountToIncrease: 1
+  rotationSpeed: 100
+  active: 1
+--- !u!108 &9058177585271697981
 Light:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7821138292803353350}
+  m_GameObject: {fileID: 3775965563014733383}
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 2
-  m_Color: {r: 0, g: 0.062781096, b: 1, a: 1}
+  m_Color: {r: 0.08904416, g: 0.284059, b: 0.8207547, a: 1}
   m_Intensity: 2
   m_Range: 2
   m_SpotAngle: 30
@@ -176,13 +194,13 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
---- !u!114 &5742128134320200029
+--- !u!114 &1723425313411684422
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7821138292803353350}
+  m_GameObject: {fileID: 3775965563014733383}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
@@ -199,21 +217,3 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
---- !u!114 &7959083959160767958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7821138292803353350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c75480152d87514e90189a0df4a5768, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pickUpSignal: {fileID: 11400000, guid: 7d941a5f0a952c248b7beda6584e30e0, type: 2}
-  quiver: {fileID: 11400000, guid: be3eaa317cd053d42a85cf350920203b, type: 2}
-  maxAmmo: 0
-  amountToIncrease: 5
-  rotationSpeed: 100
-  active: 1

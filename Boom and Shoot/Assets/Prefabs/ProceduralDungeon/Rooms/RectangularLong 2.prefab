@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 1470782216158890035}
   m_Layer: 11
   m_Name: Floor (1)
-  m_TagString: Roof
+  m_TagString: environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3549,7 +3549,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4447611158356891651, guid: e9535244b5cab2043a0eadb7756b8ba5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.99
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4447611158356891651, guid: e9535244b5cab2043a0eadb7756b8ba5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3586,6 +3586,10 @@ PrefabInstance:
     - target: {fileID: 5111988585549866829, guid: e9535244b5cab2043a0eadb7756b8ba5, type: 3}
       propertyPath: m_Name
       value: FogOfWar
+      objectReference: {fileID: 0}
+    - target: {fileID: 5111988585549866829, guid: e9535244b5cab2043a0eadb7756b8ba5, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
