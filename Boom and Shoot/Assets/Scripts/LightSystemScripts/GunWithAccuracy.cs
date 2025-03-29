@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class GunWithAccuracy : MonoBehaviour
 {
-
     [SerializeField] private Transform BulletSpawnPoint;
     [SerializeField] private ParticleSystem ImpactParticleSystem;
     [SerializeField] private float ShootDelay = 0.5f;
@@ -15,21 +14,9 @@ public class GunWithAccuracy : MonoBehaviour
     [SerializeField] private SignalSender ammoUpdate;
 
     private float LastShootTime;
-    private LineRenderer laserLine;
-
-    private void Start()
-    {
-        laserLine = gameObject.AddComponent<LineRenderer>();
-        laserLine.startWidth = 0.02f;
-        laserLine.endWidth = 0.02f;
-        laserLine.material = new Material(Shader.Find("Unlit/Color"));
-        laserLine.material.color = Color.red;
-    }
 
     private void Update()
     {
-        UpdateLaserPointer();
-
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Shoot();
@@ -76,12 +63,10 @@ public class GunWithAccuracy : MonoBehaviour
                         float distance = hit.distance;
                         if (distance <= dynamicAccurateRange)
                         {
-                            // Always hit within range
                             enemy.ApplyDamage(baseDamage);
                         }
                         else
                         {
-                            // Outside accurate range will apply chance-based miss
                             float hitChance = Mathf.Lerp(0.2f, 1f, illum);
                             if (Random.value > hitChance)
                             {
@@ -114,28 +99,6 @@ public class GunWithAccuracy : MonoBehaviour
 
     private Vector3 GetDirection()
     {
-        Vector3 direction = transform.forward;
-
-        return direction;
-    }
-
-    private void UpdateLaserPointer()
-    {
-        if (laserLine == null) return;
-
-        Vector3 direction = transform.forward;
-        Vector3 laserEndPoint;
-
-        if (Physics.Raycast(BulletSpawnPoint.position, direction, out RaycastHit hit, LaserMaxDistance, Mask))
-        {
-            laserEndPoint = hit.point;
-        }
-        else
-        {
-            laserEndPoint = BulletSpawnPoint.position + direction * LaserMaxDistance;
-        }
-
-        laserLine.SetPosition(0, BulletSpawnPoint.position);
-        laserLine.SetPosition(1, laserEndPoint);
+        return transform.forward;
     }
 }
