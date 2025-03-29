@@ -180,11 +180,19 @@ public class PlayerControl : MonoBehaviour
 
     void ThrowGrenade()
     {
-        GameObject grenade = Instantiate(lightGrenadePrefab, throwPoint.position, throwPoint.rotation);
-        Rigidbody rb = grenade.GetComponent<Rigidbody>();
-        rb.AddForce(throwPoint.forward * throwForce, ForceMode.Impulse);
-        grenades.runtimeValue -= 1;
-        grenadeSignal.Raise();
-        Debug.Log("Light Grenade Thrown!");
+        if (grenades.runtimeValue > 0)
+        {
+            GameObject grenade = Instantiate(lightGrenadePrefab, throwPoint.position, throwPoint.rotation);
+            Rigidbody rb = grenade.GetComponent<Rigidbody>();
+            rb.AddForce(throwPoint.forward * throwForce, ForceMode.Impulse);
+            grenades.runtimeValue -= 1;
+            grenadeSignal.Raise();
+            Debug.Log("Light Grenade Thrown!");
+        }
+        else
+        {
+            Debug.Log("No grenades left");
+            return;
+        }
     }
 }
