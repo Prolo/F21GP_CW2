@@ -6,16 +6,28 @@ public class LightDetector : MonoBehaviour
     private Light[] sceneLights;
     public float illuminationLevel { get; private set; }
 
-    private float previousIlluminationLevel = -1f;  // Track the last recorded illumination level
+    [Header("Visual Indicator")]
+    [SerializeField] private GameObject illuminationSpherePrefab;
+    private GameObject illuminationSphereInstance;
+    private Material sphereMaterial;
+
+    private float previousIlluminationLevel = -1f;
+
+    void Start()
+    {
+        if (illuminationSpherePrefab != null)
+        {
+            illuminationSphereInstance = Instantiate(illuminationSpherePrefab, transform.position + Vector3.up * 1f, Quaternion.identity, transform);
+            sphereMaterial = illuminationSphereInstance.GetComponent<Renderer>().material;
+        }
+    }
 
     void Update()
     {
-        // Find all lights but filter out those tagged as "SceneLight"
         sceneLights = FindObjectsByType<Light>(FindObjectsSortMode.None) ?? new Light[0];
 
         float newIllumination = CalculateIllumination();
 
-        // Log only if the illumination level has changed significantly
         if (!Mathf.Approximately(newIllumination, previousIlluminationLevel))
         {
             Debug.Log("Enemy Illumination Level: " + newIllumination);
@@ -23,12 +35,16 @@ public class LightDetector : MonoBehaviour
         }
 
         illuminationLevel = newIllumination;
+
+        UpdateSphereColor();
     }
 
-    void OnDrawGizmos()
+    void UpdateSphereColor()
     {
-        Gizmos.color = Color.Lerp(Color.black, Color.yellow, illuminationLevel);
-        Gizmos.DrawSphere(transform.position + Vector3.up * 1.5f, 0.3f);
+        if (sphereMaterial != null)
+        {
+            sphereMaterial.color = Color.Lerp(Color.black, Color.yellow, illuminationLevel);
+        }
     }
 
     float CalculateIllumination()
@@ -39,11 +55,10 @@ public class LightDetector : MonoBehaviour
 
         foreach (Light light in sceneLights)
         {
-
             if (!light.isActiveAndEnabled) continue;
+
             bool lit = false;
             float brightness = 0f;
-
 
             if (light.type == LightType.Point || light.type == LightType.Spot)
             {
