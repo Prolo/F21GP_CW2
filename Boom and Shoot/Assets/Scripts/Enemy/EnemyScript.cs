@@ -15,8 +15,8 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] public int attack;
     [SerializeField] public string enemyName;
     [SerializeField] public float HP, speed;
-    [SerializeField] private FloatValue maxHealth, currLevel, enemiesKilled;
-    [SerializeField] private SignalSender updateKills;
+    [SerializeField] public FloatValue maxHealth, currLevel, enemiesKilled;
+    [SerializeField] public SignalSender updateKills;
     [SerializeField] private LightDetector lightDetector;
 
 
@@ -33,7 +33,7 @@ public class EnemyScript : MonoBehaviour
         lightDetector = GetComponent<LightDetector>();
     }
 
-    public void ApplyDamage(float damage)
+    public virtual void ApplyDamage(float damage)
     {
 
 

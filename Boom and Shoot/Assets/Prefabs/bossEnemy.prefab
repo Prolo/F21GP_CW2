@@ -44,11 +44,11 @@ GameObject:
   - component: {fileID: 2025925815379336196}
   - component: {fileID: 3636728657821419789}
   - component: {fileID: 4703521814509189819}
-  - component: {fileID: 8330894579568427684}
   - component: {fileID: 4458920714644791458}
   - component: {fileID: 5339412188777613643}
+  - component: {fileID: -7941005392319125635}
   m_Layer: 10
-  m_Name: Enemy
+  m_Name: bossEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ Transform:
   m_GameObject: {fileID: 1834883834882457837}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1.59, z: 43.69}
+  m_LocalPosition: {x: 0, y: 1.397, z: 43.69}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -144,10 +144,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.82295203
+  m_Height: 4.1882877
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: -0.008000433, y: 1.0941439, z: 2.6707214e-18}
 --- !u!54 &4703521814509189819
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -175,37 +175,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &8330894579568427684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1834883834882457837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d09552797b42864ca0ca820f8e0cb68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attack: 0
-  enemyName: 
-  HP: 50
-  speed: 2
-  maxHealth: {fileID: 11400000, guid: ee487a91db5041747b7e52a28dd04d05, type: 2}
-  currLevel: {fileID: 11400000, guid: db8fc2ebad0b9744e815cb8dc01eb0bb, type: 2}
-  enemiesKilled: {fileID: 11400000, guid: 1fa9790fe42ec90468cf4b616bdb094b, type: 2}
-  updateKills: {fileID: 11400000, guid: 09b7ea9f6512f4241845a6b7fd55024a, type: 2}
-  lightDetector: {fileID: 4458920714644791458}
-  current: 0
-  target: {fileID: 0}
-  home: {fileID: 0}
-  gun: {fileID: 3606140828225864573}
-  shotPoint: {fileID: 9048304872507577940}
-  projectile: {fileID: 157376187486904033, guid: ab10863e78ed98b4f81800aa3e958b68, type: 3}
-  huntArea: 10
-  attackArea: 5
-  startBetweenShots: 2
-  rotateSpeed: 0
 --- !u!114 &4458920714644791458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,6 +205,39 @@ MonoBehaviour:
   targetRenderer: {fileID: 3255249529821155110}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 0.1
+--- !u!114 &-7941005392319125635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834883834882457837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f507dceb90926f44e977dbe2fd45d3f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: 0
+  enemyName: 
+  HP: 1
+  speed: 2
+  maxHealth: {fileID: 11400000, guid: 708e53f73cfc6d241b6d397f571adf9e, type: 2}
+  currLevel: {fileID: 11400000, guid: db8fc2ebad0b9744e815cb8dc01eb0bb, type: 2}
+  enemiesKilled: {fileID: 11400000, guid: 51bd0602381f98b4abc3b6063e55bf8c, type: 2}
+  updateKills: {fileID: 11400000, guid: 09b7ea9f6512f4241845a6b7fd55024a, type: 2}
+  lightDetector: {fileID: 4458920714644791458}
+  current: 0
+  target: {fileID: 0}
+  home: {fileID: 0}
+  gun: {fileID: 3606140828225864573}
+  shotPoint: {fileID: 9048304872507577940}
+  projectile: {fileID: 157376187486904033, guid: e925c4a770396bf48adc4943f393c98d, type: 3}
+  huntArea: 10
+  attackArea: 5
+  startBetweenShots: 1
+  rotateSpeed: 0
+  fadeOut: {fileID: 5648383955732714574, guid: bd07647491c645446b97ce4ad397881c, type: 3}
+  fadeIn: {fileID: 6493171022990901329, guid: 9335037d6c90a524bbb66346c9853e8f, type: 3}
 --- !u!1 &5042800868845485096
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,7 +376,7 @@ Transform:
   m_GameObject: {fileID: 6913935959659433592}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.644, z: 0.57}
+  m_LocalPosition: {x: -0, y: 2.104, z: 1.385}
   m_LocalScale: {x: 0.4, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -494,6 +496,18 @@ PrefabInstance:
     - target: {fileID: 4051069155777918, guid: 1e53ab99435b1194a83bb713baff0dd1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -5.909
+      objectReference: {fileID: 0}
+    - target: {fileID: 4135106407635332, guid: 1e53ab99435b1194a83bb713baff0dd1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4135106407635332, guid: 1e53ab99435b1194a83bb713baff0dd1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4135106407635332, guid: 1e53ab99435b1194a83bb713baff0dd1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4135106407635332, guid: 1e53ab99435b1194a83bb713baff0dd1, type: 3}
       propertyPath: m_LocalPosition.x
