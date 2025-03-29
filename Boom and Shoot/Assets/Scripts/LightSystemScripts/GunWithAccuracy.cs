@@ -64,6 +64,12 @@ public class GunWithAccuracy : MonoBehaviour
                         if (distance <= dynamicAccurateRange)
                         {
                             enemy.ApplyDamage(baseDamage);
+
+                            EnemyFlashOnHit flasher = hit.collider.GetComponent<EnemyFlashOnHit>();
+                            if (flasher != null)
+                            {
+                                flasher.Flash();
+                            }
                         }
                         else
                         {
@@ -81,6 +87,12 @@ public class GunWithAccuracy : MonoBehaviour
                             if (damage > 0)
                             {
                                 enemy.ApplyDamage(damage);
+
+                                EnemyFlashOnHit flasher = hit.collider.GetComponent<EnemyFlashOnHit>();
+                                if (flasher != null)
+                                {
+                                    flasher.Flash();
+                                }
                             }
                         }
                     }
