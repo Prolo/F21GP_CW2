@@ -28,7 +28,7 @@ public class PlayerControl : MonoBehaviour
 
     // Signals sent to update the canvas
     [Header("Player related signals")]
-    [SerializeField] private SignalSender hpSignal, pickupSignal, grenadeSignal;
+    [SerializeField] private SignalSender hpSignal, pickupSignal, grenadeSignal, scoreSignal, killsSignal, bossSignal, totalSignal;
 
     // Players stats
     [Header("Player Stats")]
@@ -50,6 +50,11 @@ public class PlayerControl : MonoBehaviour
         // currentState = PlayerState.walk;
         hpSignal.Raise();
         pickupSignal.Raise();
+        scoreSignal.Raise();
+        killsSignal.Raise();
+        bossSignal.Raise();
+        totalSignal.Raise();
+
     }
 
     // Update is called once per frame

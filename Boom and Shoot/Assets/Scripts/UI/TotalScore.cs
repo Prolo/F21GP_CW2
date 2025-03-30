@@ -10,6 +10,7 @@ public class TotalScore : MonoBehaviour
 
     public void updateTotalCount()
     {
-        display.text = "" + playerInv.score.runtimeValue+(kills.runtimeValue*10)+(bossKill.runtimeValue*100);
+        float totalScore = playerInv.score.runtimeValue + (kills.runtimeValue * 10) + (bossKill.runtimeValue * 100);
+        display.text = "" + totalScore;
     }
 }

@@ -197,6 +197,10 @@ MonoBehaviour:
   hpSignal: {fileID: 11400000, guid: 29dc98bf7186f514385168fdd2d206e3, type: 2}
   pickupSignal: {fileID: 11400000, guid: 7d941a5f0a952c248b7beda6584e30e0, type: 2}
   grenadeSignal: {fileID: 11400000, guid: 7d941a5f0a952c248b7beda6584e30e0, type: 2}
+  scoreSignal: {fileID: 11400000, guid: 09b7ea9f6512f4241845a6b7fd55024a, type: 2}
+  killsSignal: {fileID: 11400000, guid: 09b7ea9f6512f4241845a6b7fd55024a, type: 2}
+  bossSignal: {fileID: 11400000, guid: 09b7ea9f6512f4241845a6b7fd55024a, type: 2}
+  totalSignal: {fileID: 11400000, guid: 09b7ea9f6512f4241845a6b7fd55024a, type: 2}
   currHP: {fileID: 11400000, guid: bf201c8a94796b641a33b09011575541, type: 2}
   maxHP: {fileID: 11400000, guid: 6781e2990aed1d34aa6fc2f2fc134177, type: 2}
   grenades: {fileID: 11400000, guid: 6403949e4d8d70a4b8b792a67c5a18e9, type: 2}
