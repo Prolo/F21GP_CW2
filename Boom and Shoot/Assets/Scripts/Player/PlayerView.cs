@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerView : MonoBehaviour
 {
 
-    [SerializeField] private float minViewDistance = 25f, mouseSensitivity = 100f, xRotation = 0f, yRotation = 0f;
+    [SerializeField] private float minViewDistance = 25f, mouseSensitivity = 10f, xRotation = 0f, yRotation = 0f;
     [SerializeField] private Transform playerBody;
 
 
@@ -11,7 +11,7 @@ public class PlayerView : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        Application.targetFrameRate = 60;
         if (Input.GetKey(KeyCode.V))
         {
             Cursor.visible = true;

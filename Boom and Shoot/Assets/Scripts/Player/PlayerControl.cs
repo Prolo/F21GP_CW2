@@ -38,6 +38,12 @@ public class PlayerControl : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
+        
+        transform.position = new Vector3(0, 1, 0);
+        transform.rotation = new Quaternion(0, 0, 0, 0);
+        
+
         controller = GetComponent<CharacterController>();
         if (cursorLock)
         {
@@ -93,20 +99,13 @@ public class PlayerControl : MonoBehaviour
         velocity = (transform.forward * currDir.y + transform.right * currDir.x) * speed + Vector3.up * velocityY;
         controller.Move(velocity * Time.deltaTime);
 
-        if (isGrounded && Input.GetKeyDown(KeyCode.Space))
-        {
-            velocityY = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        }
-
-        if (isGrounded! && controller.velocity.y < -1f)
-        {
-            velocityY = -8f;
-        }
     }
 
     void MoveMouse()
     {
-        Vector2 targetMouseDelta = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        Vector2 targetMouseDelta = new Vector2(mouseX, mouseY);
         currMouseDelta = Vector2.SmoothDamp(currMouseDelta, targetMouseDelta, ref currMouseDeltaVelocity, camSmoothTime);
         cameraCap -= currMouseDelta.y * mouseSensitivity;
 
@@ -121,7 +120,7 @@ public class PlayerControl : MonoBehaviour
     {
         // checks that key is pressed
         if (!context.started) return;
-        // checks if player in on the ground
+        // checks if player in on the groundS
         if (!IsGrounded() && jumpCount >= maxJumps) return;
         if (jumpCount == 0) StartCoroutine(whenGrounded());
 

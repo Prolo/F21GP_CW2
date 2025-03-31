@@ -19,6 +19,7 @@ public class GunWithAccuracy : MonoBehaviour
     private void Start()
     {
         bowShot = GetComponent<AudioSource>();
+        Application.targetFrameRate = 60;
     }
 
     private void Update()
