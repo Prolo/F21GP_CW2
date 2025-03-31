@@ -1,5 +1,3 @@
-using UnityEditor.Experimental.GraphView;
-using System.Collections;
 using UnityEngine;
 
 public class PlayerView : MonoBehaviour

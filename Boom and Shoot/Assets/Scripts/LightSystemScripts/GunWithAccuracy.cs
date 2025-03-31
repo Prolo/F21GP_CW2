@@ -1,5 +1,5 @@
-using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class GunWithAccuracy : MonoBehaviour
 {
@@ -12,8 +12,14 @@ public class GunWithAccuracy : MonoBehaviour
     [SerializeField] private float baseAccurateRange = 30f;
     [SerializeField] private FloatValue quiver;
     [SerializeField] private SignalSender ammoUpdate;
+    private AudioSource bowShot;
 
     private float LastShootTime;
+
+    private void Start()
+    {
+        bowShot = GetComponent<AudioSource>();
+    }
 
     private void Update()
     {
@@ -31,6 +37,8 @@ public class GunWithAccuracy : MonoBehaviour
             return;
         }
 
+        bowShot.Play();
+
         if (Time.time >= LastShootTime + ShootDelay)
         {
             Vector3 direction = GetDirection();
@@ -42,6 +50,7 @@ public class GunWithAccuracy : MonoBehaviour
 
                 quiver.runtimeValue--;
                 ammoUpdate.Raise();
+                
 
                 if (hit.collider.CompareTag("Enemy"))
                 {
