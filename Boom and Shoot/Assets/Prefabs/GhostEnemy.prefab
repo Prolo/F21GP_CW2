@@ -12,10 +12,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GhostEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 4458920714644791458, guid: fa647b6d788d8f94684f8f86b059ce57, type: 3}
-      propertyPath: illuminationSpherePrefab
-      value: 
-      objectReference: {fileID: 982867428386830126, guid: 6610627bbb9f32b4ea2071d77b27b45c, type: 3}
     - target: {fileID: 7271097750945319478, guid: fa647b6d788d8f94684f8f86b059ce57, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.13

@@ -221,6 +221,7 @@ MonoBehaviour:
   occlusionMask:
     serializedVersion: 2
     m_Bits: 512
+  illuminationSpherePrefab: {fileID: 982867428386830126, guid: 6610627bbb9f32b4ea2071d77b27b45c, type: 3}
 --- !u!114 &5339412188777613643
 MonoBehaviour:
   m_ObjectHideFlags: 0
