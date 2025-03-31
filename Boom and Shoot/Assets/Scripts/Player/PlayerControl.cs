@@ -32,7 +32,7 @@ public class PlayerControl : MonoBehaviour
 
     // Players stats
     [Header("Player Stats")]
-    [SerializeField] private FloatValue currHP, maxHP, grenades;
+    [SerializeField] private FloatValue currHP, maxHP, grenades, kills, bossKill;
     [SerializeField] private Inventory playerInv;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -44,6 +44,12 @@ public class PlayerControl : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = true;
         }
+
+        playerInv.ammo.runtimeValue = playerInv.ammo.startValue;
+        playerInv.grenades.runtimeValue = playerInv.grenades.startValue;
+        kills.runtimeValue = kills.startValue;
+        bossKill.runtimeValue = bossKill.startValue;
+
 
         // initial start up, such as player state and sending values to the canvas
         Application.targetFrameRate = 60;
@@ -65,6 +71,12 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.G))
         {
             ThrowGrenade();
+        }
+        if (transform.position.y <= -10)
+        {
+            controller.enabled = false;
+            transform.position = new Vector3(0, 1, 0);
+            controller.enabled = true;
         }
     }
 

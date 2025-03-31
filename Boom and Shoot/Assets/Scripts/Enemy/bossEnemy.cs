@@ -144,7 +144,7 @@ public class bossEnemy : EnemyScript
         // If the enemy is dead, set it to drop loot, and disable the gameobject
         if (HP <= 0)
         {
-            enemiesKilled.runtimeValue += 1;
+            enemiesKilled.runtimeValue = 1;
             updateKills.Raise();
             targetScene = "VICTORY";
             StartCoroutine(FadeCo());

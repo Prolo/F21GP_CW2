@@ -204,6 +204,8 @@ MonoBehaviour:
   currHP: {fileID: 11400000, guid: bf201c8a94796b641a33b09011575541, type: 2}
   maxHP: {fileID: 11400000, guid: 6781e2990aed1d34aa6fc2f2fc134177, type: 2}
   grenades: {fileID: 11400000, guid: 6403949e4d8d70a4b8b792a67c5a18e9, type: 2}
+  kills: {fileID: 11400000, guid: 1fa9790fe42ec90468cf4b616bdb094b, type: 2}
+  bossKill: {fileID: 11400000, guid: 51bd0602381f98b4abc3b6063e55bf8c, type: 2}
   playerInv: {fileID: 11400000, guid: 2c270198ee7ba0647b7c5b5a752a68cb, type: 2}
 --- !u!1 &1365711513921642589
 GameObject:
