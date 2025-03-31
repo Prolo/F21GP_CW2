@@ -176,7 +176,7 @@ MonoBehaviour:
   moveSmoothtime: 0.3
   cursorLock: 1
   isGrounded: 0
-  mouseSensitivity: 3.5
+  mouseSensitivity: 10
   speed: 5
   gravity: -30
   jumpHeight: 10
