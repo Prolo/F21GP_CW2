@@ -47,6 +47,7 @@ public class PlayerControl : MonoBehaviour
 
         playerInv.ammo.runtimeValue = playerInv.ammo.startValue;
         playerInv.grenades.runtimeValue = playerInv.grenades.startValue;
+        playerInv.score.runtimeValue = playerInv.score.startValue;
         kills.runtimeValue = kills.startValue;
         bossKill.runtimeValue = bossKill.startValue;
 
