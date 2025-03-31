@@ -109,7 +109,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.5, y: 1.5, z: 1.5}
+  m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0.00001642108, z: -0.00000011920929}
 --- !u!108 &6303279427527184433
 Light:
@@ -214,6 +214,6 @@ MonoBehaviour:
   pickUpSignal: {fileID: 11400000, guid: 7d941a5f0a952c248b7beda6584e30e0, type: 2}
   quiver: {fileID: 11400000, guid: be3eaa317cd053d42a85cf350920203b, type: 2}
   maxAmmo: 0
-  amountToIncrease: 5
+  amountToIncrease: 10
   rotationSpeed: 100
   active: 1
